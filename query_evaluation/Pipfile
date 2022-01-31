@@ -7,8 +7,5 @@ name = "pypi"
 sparqlwrapper = "1.8.5"
 pandas = "*"
 
-[dev-packages]
-pylint = "*"
-
 [requires]
 python_version = "3.7"
