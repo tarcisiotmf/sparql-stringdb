@@ -1,4 +1,4 @@
-#Query Evaluation Examples
+# Query Evaluation Examples
 
 The python script [main.py](main.py) along with [queries_sparqlms.py](queries_sparqlms.py) calculate the mean and 
 standard deviation of the query execution in terms of response time in seconds. The queries are detailed in the next sections and retrieve data from STRING and OMA databases. The table below summarises the output 
