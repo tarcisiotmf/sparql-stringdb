@@ -1,0 +1,24 @@
+prefix orth: <http://purl.org/net/orth#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix dct: <http://purl.org/dc/terms/>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix up: <http://purl.uniprot.org/core/>
+prefix sio: <http://semanticscience.org/resource/> 
+prefix rad: <http://www.w3.org/ns/radion#> 
+prefix api: <https://string-db.org/cgi/help.pl?subpage=api#>
+
+CONSTRUCT {
+<https://string-db.org> dct:hasVersion ?stable_address.
+?stable_address rad:version ?string_version;
+rdfs:label ?label_version.        
+
+}
+WHERE {
+    ?content
+        api:string_version ?string_version;
+        api:stable_address ?stable_address   .
+
+    bind (concat("STRING database version ",str(?string_version)) AS ?label_version)
+   
+
+}

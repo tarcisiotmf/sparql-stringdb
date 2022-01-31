@@ -1,0 +1,96 @@
+prefix orth: <http://purl.org/net/orth#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix terms: <http://purl.org/dc/terms/> 
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix up: <http://purl.uniprot.org/core/>
+prefix sio: <http://semanticscience.org/resource/> 
+prefix : <http://purl.org/stringdb#> 
+prefix api_stringdb: <https://string-db.org/cgi/help.pl?subpage=api#>
+
+CONSTRUCT {
+?proteinURI a orth:Protein;              
+    orth:organism  ?organism;
+    skos:prefLabel ?prefGeneLabel;
+    rdfs:label ?geneLabel;
+    obo:RO_0001018 <https://string-db.org>. #contained in
+
+
+?organism a orth:Organism;
+    terms:identifier ?ncbiTaxonId ;
+    obo:RO_0002162 ?taxon.
+?taxon a up:Taxon;
+    terms:identifier ?ncbiTaxonId .
+
+ <https://string-db.org> rdf:type sio:SIO_000750. #A database.
+
+?proteinURI  up:classifiedWith ?term_URI ;
+rdfs:seeAlso ?db_URI.
+
+?term_URI a up:Concept;
+ skos:inScheme ?vocabulary;
+ rdfs:label ?description;
+ skos:prefLabel ?description.
+
+?db_URI a up:Resource;
+rdfs:comment ?description;
+up:database ?db .
+
+
+
+}
+WHERE {
+{    
+?content api_stringdb:category ?category .
+?content api_stringdb:description ?description .
+?content api_stringdb:inputGenes ?geneLabel .
+?content api_stringdb:ncbiTaxonId ?ncbiTaxonId .
+#?content api_stringdb:number_of_genes ?genes_number .
+?content api_stringdb:preferredNames ?prefGeneLabel .
+#?content api_stringdb:ratio_in_set ?ratio .
+?content api_stringdb:term ?term .
+
+#Note we are not able from this API results to get the STRING protein identifier.Therefore the protein URI cannot be based on the string ID.
+    bind (IRI(concat("https://string-db.org/cgi/network?identifier=", ?geneLabel)) AS ?proteinURI)
+ 
+    bind (IRI(concat("https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=", ?ncbiTaxonId)) AS ?organism)
+    bind (IRI(concat("http://purl.uniprot.org/taxonomy/", ?ncbiTaxonId)) AS ?taxon)
+   
+ 
+
+BIND( IF(contains(?term, "GO:"), IRI(replace(?term,"GO:", "http://purl.obolibrary.org/obo/GO_")) ,
+             IF(contains(?category, "Keyword"), IRI(concat("http://purl.uniprot.org/keywords/",xsd:integer(replace(?term,"KW-",""))) ),                            
+                    <http://purl.uniprot.org>) )  as ?term_URI) 
+
+BIND( IF(contains(?term, "GO:") , <http://purl.obolibrary.org/obo/go.owl> , IF(contains(?category, "Keyword"),<https://www.uniprot.org/docs/keywlist.txt>, <http://purl.uniprot.org> ) ) as ?vocabulary ) 
+
+FILTER(?term_URI!=<http://purl.uniprot.org> )
+}UNION {
+
+?content api_stringdb:category ?category .
+?content api_stringdb:description ?description .
+?content api_stringdb:inputGenes ?geneLabel .
+?content api_stringdb:ncbiTaxonId ?ncbiTaxonId .
+#?content api_stringdb:number_of_genes ?genes_number .
+?content api_stringdb:preferredNames ?prefGeneLabel .
+#?content api_stringdb:ratio_in_set ?ratio .
+?content api_stringdb:term ?term .
+
+#Note we are not able from this API results to get the STRING protein identifier.Therefore the protein URI cannot be based on the string ID.
+    bind (IRI(concat("https://string-db.org/cgi/network?identifier=", ?geneLabel)) AS ?proteinURI)
+ 
+    bind (IRI(concat("https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=", ?ncbiTaxonId)) AS ?organism)
+    bind (IRI(concat("http://purl.uniprot.org/taxonomy/", ?ncbiTaxonId)) AS ?taxon)
+
+BIND(IF(contains(?category, "InterPro"), IRI(concat("http://purl.uniprot.org/interpro/", ?term ) ),
+                    IF(contains(?category, "Pfam"), IRI(concat("http://purl.uniprot.org/pfam/", ?term ) ), 
+                    IF(contains(?category, "RCTM"), IRI(concat("http://identifiers.org/reactome/R-", ?term ) ), 
+                    IF(contains(?category, "SMART"), IRI(concat("http://purl.uniprot.org/smart/", ?term ) ), 
+                    IF(contains(?category, "KEGG"), IRI(concat("http://purl.uniprot.org/kegg/", ?term ) ),
+                    <http://purl.uniprot.org> ) ) ) ) ) as ?db_URI )
+
+BIND(IRI(CONCAT("http://purl.uniprot.org/database/", IF(?category="RCTM","Reactome", IF(contains(?term, "GO:") || contains(?category, "Keyword"),"",?category) ) ) ) as ?db)
+FILTER(?db_URI!=<http://purl.uniprot.org> )
+FILTER(?db!=<http://purl.uniprot.org/database/> )
+ }
+
+}

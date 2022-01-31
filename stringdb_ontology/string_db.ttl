@@ -1,0 +1,790 @@
+@prefix : <http://purl.org/stringdb#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix efo: <http://www.ebi.ac.uk/efo/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bgee: <http://bgee.org/#> .
+@prefix lscr: <http://purl.org/lscr#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix orth: <http://purl.org/net/orth#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix genex: <http://purl.org/genex#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix uberon: <http://purl.obolibrary.org/obo/uberon#> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix  mondo: <http://purl.obolibrary.org/obo/mondo#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
+@prefix npg: <http://ns.nature.com/terms/> .
+@prefix chebi: <http://purl.obolibrary.org/obo/chebi/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix rad: <http://www.w3.org/ns/radion#> .
+
+@base <http://purl.org/stringdb#>.
+
+<http://purl.org/stringdb> rdf:type owl:Ontology ;
+                        owl:versionIRI <http://purl.org/stringdb/0.2> ;
+                        owl:imports <http://purl.org/lscr/0.1>  ;
+                        owl:versionInfo "STRING database Web API ontology"@en ;
+                        dc:creator <http://purl.org/query/tarcisiomf> .
+####
+#### Terms added after considering STRING Web API: Mapping identifiers
+####
+
+###  http://purl.org/net/orth#Protein
+orth:Protein rdf:type owl:Class ;
+             rdfs:subClassOf orth:SequenceUnit ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty orth:organism ;
+                               owl:someValuesFrom orth:Organism
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty obo:RO_0001018 ;
+                               owl:allValuesFrom sio:SIO_000750
+                             ] ;
+             rdfs:label "Protein"@en .
+
+###  http://purl.org/net/orth#SequenceUnit
+orth:SequenceUnit rdf:type owl:Class ;
+                  rdfs:comment "protein or DNA sequence as a unit of comparison"@en ;
+                  rdfs:label "Sequence unit"@en .
+
+###  http://purl.obolibrary.org/obo/RO_0001018
+obo:RO_0001018 rdf:type owl:ObjectProperty ;
+               rdfs:label "contained in"@en .
+
+###  http://semanticscience.org/resource/SIO_000750
+sio:SIO_000750 rdf:type owl:Class ;
+               rdfs:comment "A database is a data store such as relational, hierarchical and graph databases."@en ;
+               rdfs:label "database"@en .
+
+###  http://purl.org/net/orth#Organism
+orth:Organism rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty obo:RO_0002162 ;
+                                owl:someValuesFrom up:Taxon
+                              ] ;
+              rdfs:comment "A living being, such as an animal, a plant, a bacterium, or a fungus., Any individual living (or previously living) being. Example: animal, human being. An organim can be associated to a taxon such as \"Homo Sapiens\", NCBI taxonomy identifier: 9606."@en ;
+              rdfs:label "Organism"@en ;
+              skos:altLabel "Living being"@en .
+
+###  http://purl.uniprot.org/core/Taxon
+up:Taxon rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty up:replaces ;
+                           owl:allValuesFrom up:Taxon
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty up:mnemonic ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ;
+         rdfs:comment "An element of a taxonomy for classifying life forms."^^xsd:string ;
+         rdfs:label "Taxon"^^xsd:string ;
+         rdfs:seeAlso "http://www.ncbi.nlm.nih.gov/books/NBK54428/" .
+
+###  http://purl.uniprot.org/core/mnemonic
+up:mnemonic rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string ;
+            rdfs:comment "A easy to remember identifier for a UniProtKB entry, but it is not a stable identifier and should not be used by programs to identify entries."@en ,
+                         "A rememberable string that can be used to find entries, not a stable identifier!"^^xsd:string ;
+            rdfs:label "Mnemonic"^^xsd:string ;
+            rdfs:seeAlso "http://www.uniprot.org/manual/entry_name" .
+
+###  http://purl.uniprot.org/core/scientificName
+up:scientificName rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:isDefinedBy "http://purl.uniprot.org/core/" ;
+                  rdfs:label "scientific name"^^xsd:string .
+
+###  http://purl.uniprot.org/core/rank
+up:rank rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain up:Taxon ;
+        rdfs:range up:Rank ;
+        rdfs:comment "The rank of a taxon."^^xsd:string .
+
+###  http://purl.uniprot.org/core/replaces
+up:replaces rdf:type owl:ObjectProperty ;
+            rdfs:domain up:Taxon ;
+            rdfs:range up:Taxon ;
+            rdfs:comment "A resource that is replaced by this resource."^^xsd:string .
+
+
+<http://purl.uniprot.org/taxonomy/9606> a up:Taxon ;
+										rdfs:label "Homo sapiens".
+
+
+
+###  http://purl.obolibrary.org/obo/RO_0002162
+obo:RO_0002162 rdf:type owl:ObjectProperty ;
+               rdfs:comment "Connects a biological entity to its taxon of origin."@en ;
+               rdfs:label "in taxon"@en .
+
+###  http://purl.obolibrary.org/obo/NCIT_C14250
+obo:NCIT_C14250 rdf:type owl:Class ;
+                owl:equivalentClass orth:Organism ;
+                rdfs:label "Organism" .
+
+###  http://purl.org/net/orth#organism
+orth:organism rdf:type owl:ObjectProperty ;
+              rdfs:domain orth:SequenceUnit ;
+              rdfs:range orth:Organism .
+
+###  http://purl.obolibrary.org/obo/SO_0000104
+obo:SO_0000104 rdf:type owl:Class ;
+               owl:equivalentClass orth:Protein ;
+               rdfs:label "polypeptide"^^xsd:string .
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description 
+			   a rdf:Property ;
+               rdfs:range rdfs:Literal ;
+               terms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+               rdfs:comment "An account of the resource."@en ;
+               rdfs:isDefinedBy dc: ;
+               rdfs:label "Description"@en .
+
+terms:license
+    terms:description "Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."@en ;
+    terms:issued "2004-06-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A legal document giving official permission to do something with the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "License"@en .
+
+###  http://purl.org/dc/terms/description
+terms:description rdf:type rdf:Property ;
+                  terms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+                  rdfs:comment "An account of the resource."@en ;
+                  rdfs:isDefinedBy terms: ;
+                  rdfs:label "Description"@en .
+
+skos:prefLabel a owl:AnnotationProperty ;
+rdfs:label "preferred label"@en ;
+rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core>;
+skos:definition "The preferred lexical label for a resource, in a given language."@en ;
+rdfs:subPropertyOf rdfs:label;
+rdfs:comment "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag."@en ;
+rdfs:comment "The range of skos:prefLabel is the class of RDF plain literals."@en ;
+rdfs:comment "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."@en .
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:comment "The range of skos:altLabel is the class of RDF plain literals."@en ,
+                           "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."@en ;
+              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+              rdfs:label "alternative label"@en ;
+              skos:definition "An alternative lexical label for a resource."@en ;
+              skos:example "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)."@en ;
+              rdfs:subPropertyOf rdfs:label .
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                rdfs:label "definition"@en ;
+                skos:definition "A statement or formal explanation of the meaning of a concept."@en ;
+                rdfs:subPropertyOf skos:note .
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+          rdfs:label "note"@en ;
+          skos:definition "A general note, for any purpose."@en ;
+          skos:scopeNote "This property may be used directly, or as a super-property for more specific note types."@en .
+
+####
+#### Terms added after considering STRING Web API: Getting STRING network image
+####
+
+:hasNetworkImage rdf:type owl:ObjectProperty;
+				 rdfs:label "has network image"^^xsd:string;
+				 rdfs:range :NetworkImage ;
+				 rdfs:domain orth:Protein ;
+				 rdfs:comment "It states a network image of interactions among  proteins (e.g. from STRING database). The image is composed of a neighborhood surrounding one or more proteins."^^xsd:string.
+
+:NetworkImage a owl:Class ;
+			 rdfs:label "network image"^^xsd:string ;
+			 rdfs:comment "A network image of interactions among  proteins, that illustrates a neighborhood surrounding one or more proteins."^^xsd:string ;
+			 rdfs:subClassOf 
+			 			[ rdf:type owl:Restriction ;
+                           owl:onProperty :format ;
+                           owl:allValuesFrom [rdf:type rdfs:Datatype ;
+                          owl:oneOf ("png" "svg" )]
+                         ].
+
+:networkFlavor rdf:type owl:DatatypeProperty ;
+      rdfs:label "network flavor"^^xsd:string ;
+      rdfs:domain :NetworkImage ;
+      rdfs:range [rdf:type rdfs:Datatype ;
+                  owl:oneOf ("evidence" "actions" "confidence")] ;
+      rdfs:comment "The style of edges in the network: evidence, confidence, actions"^^xsd:string .
+
+:networkType rdf:type owl:DatatypeProperty ;
+      rdfs:label "network type"^^xsd:string ;
+      rdfs:domain :NetworkImage ;
+      rdfs:range [ rdf:type rdfs:Datatype ;
+                   owl:oneOf ("functional" "physical")] ;
+      rdfs:comment "The network type: functional or physical"^^xsd:string .
+
+:format rdf:type owl:DatatypeProperty ;
+      rdfs:label "format"^^xsd:string ;
+      rdfs:domain :NetworkImage ;
+      rdfs:range xsd:string ;
+      rdfs:comment "The file format (e.g. png, svg)."^^xsd:string .
+
+:resolution rdf:type owl:DatatypeProperty ;
+      rdfs:label "resolution"^^xsd:string ;
+      rdfs:domain :NetworkImage ;
+      rdfs:range [ rdf:type rdfs:Datatype ;
+                   owl:oneOf ("high" "medium" "low" "unknown") ] ;
+      rdfs:comment "The image resolution as a qualitative value (e.g. high resolution)."^^xsd:string .
+
+####
+#### Terms added after considering STRING Web API: Getting the STRING network interactions
+#### and Getting all the STRING interaction partners of the protein set
+####
+
+###  http://purl.obolibrary.org/obo/RO_0002434
+obo:RO_0002434 rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty ;
+               rdfs:domain obo:BFO_0000040 ;
+               rdfs:range obo:BFO_0000040 ;
+               obo:IAO_0000115 "A relationship that holds between two entities in which the processes executed by the two entities are causally connected." ;
+               obo:IAO_0000116 "Considering relabeling as 'pairwise interacts with'"^^xsd:anyURI ,
+                               "This relation and all sub-relations can be applied to either (1) pairs of entities that are interacting at any moment of time (2) populations or species of entity whose members have the disposition to interact (3) classes whose members have the disposition to interact." ;
+               obo:IAO_0000117 "Chris Mungall" ;
+               obo:IAO_0000232 "Note that this relationship type, and sub-relationship types may be redundant with process terms from other ontologies. For example, the symbiotic relationship hierarchy parallels GO. The relations are provided as a convenient shortcut. Consider using the more expressive processual form to capture your data. In the future, these relations will be linked to their cognate processes through rules." ;
+               oboInOwl:hasExactSynonym "in pairwise interaction with" ;
+               rdfs:label "interacts with" ;
+               rdfs:seeAlso "http://purl.obolibrary.org/obo/MI_0914"^^xsd:anyURI ;
+               foaf:page "https://github.com/oborel/obo-relations/wiki/InteractionRelations"^^xsd:anyURI .
+
+###  http://purl.obolibrary.org/obo/BFO_0000040
+obo:BFO_0000040 rdf:type owl:Class ;
+                skos:relatedMatch sio:SIO_000004;
+                obo:IAO_0000112 "A heart, a human, a fly, a microarray."^^xsd:string ;
+                obo:IAO_0000115 "A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray."^^xsd:string ;
+                obo:IAO_0000117 "James Malone"^^xsd:string ;
+                efo:source_definition "An independent continuant [snap:IndependentContinuant] that is spatially extended whose identity is independent of that of other entities and can be maintained through time. Note: Material entity [snap:MaterialEntity] subsumes object [snap:Object], fiat object part [snap:FiatObjectPart], and object aggregate [snap:ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology."^^xsd:string ;
+                owl:equivalentClass <http://www.ifomis.org/bfo/1.1/snap#MaterialEntity> ;
+                oboInOwl:hasExactSynonym "material type"^^xsd:string ;
+                rdfs:label "material entity"^^xsd:string ;
+                rdfs:isDefinedBy obo:bfo.owl ;
+                terms:license <http://creativecommons.org/licenses/by/4.0/> .
+
+##  http://purl.obolibrary.org/obo/IAO_0000112
+obo:IAO_0000112 rdf:type owl:AnnotationProperty ;
+                rdfs:label "example of usage" .
+
+##  http://purl.obolibrary.org/obo/IAO_0000117
+obo:IAO_0000117 rdf:type owl:AnnotationProperty ;
+                 rdfs:label "term editor".
+
+###  http://purl.obolibrary.org/obo/IAO_0000115
+obo:IAO_0000115 rdf:type owl:AnnotationProperty ;
+                rdfs:label "definition"^^xsd:string .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000116
+obo:IAO_0000116 rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy obo:iao.owl ;
+                rdfs:label "editor note"@en .
+
+###  http://purl.obolibrary.org/obo/IAO_0000232
+obo:IAO_0000232 rdf:type owl:AnnotationProperty ;
+                rdfs:isDefinedBy obo:iao.owl ;
+                rdfs:label "curator note"@en .
+
+###  http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
+oboInOwl:hasExactSynonym rdf:type owl:AnnotationProperty ;
+                         rdfs:comment "An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle"@en ;
+                         rdfs:label "has_exact_synonym"@en ;
+                         rdfs:subPropertyOf oboInOwl:hasSynonym  ;
+                rdfs:isDefinedBy oboInOwl: .
+
+###  http://www.geneontology.org/formats/oboInOwl#hasSynonym
+oboInOwl:hasSynonym rdf:type owl:AnnotationProperty ;
+                    rdfs:comment "A relation between a class and an alias term."@en ;
+                    rdfs:comment "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL"^^xsd:string ;
+                    rdfs:label "has_synonym"@en  ;
+                    rdfs:isDefinedBy oboInOwl: .
+
+###  http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
+oboInOwl:hasAlternativeId rdf:type owl:AnnotationProperty ;
+                          rdfs:label "has_alternative_id"^^xsd:string  ;
+                rdfs:isDefinedBy oboInOwl: .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasDbXref
+oboInOwl:hasDbXref rdf:type owl:AnnotationProperty ;
+                   rdfs:label "has_dbxref"@en ;
+                rdfs:isDefinedBy oboInOwl: .
+
+
+oboInOwl:hasRelatedSynonym rdf:type owl:AnnotationProperty ;
+                           rdfs:comment   "An alias in which the alias is related the primary class name, but not necessarily broader or narrower. Example: cytochrome bc1 complex is a related synonym of ubiquinol-cytochrome-c reductase activity; virulence is a related synonym of pathogenesis"@en ;
+                           rdfs:label "has_related_synonym"@en ;
+                           rdfs:subPropertyOf oboInOwl:hasSynonym ;
+                rdfs:isDefinedBy oboInOwl: .
+
+:functionallyInteractsWith rdf:type owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty;
+	  rdfs:subPropertyOf obo:RO_0002434 ;
+	  rdfs:label "functionally interacts with"^^xsd:string ;
+      rdfs:domain orth:Protein ;
+      rdfs:range  orth:Protein ;
+      rdfs:comment "It states a protein that functionally interacts with another one, a pairwise relationship."^^xsd:string .
+
+:physicallyInteractsWith rdf:type owl:ObjectProperty, owl:SymmetricProperty, owl:IrreflexiveProperty;
+	  rdfs:subPropertyOf obo:RO_0002434 ;
+	  rdfs:label "physically interacts with"^^xsd:string ;
+      rdfs:domain orth:Protein ;
+      rdfs:range  orth:Protein ;
+      rdfs:comment "It states a protein that physically interacts with another one, a pairwise relationship."^^xsd:string .
+
+:ProteinProteinInteraction rdf:type owl:Class ;
+		rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasProtein ;
+                           owl:someValuesFrom orth:Protein ;
+                           owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger 
+                         ] ;
+		skos:closeMatch <http://purl.obolibrary.org/obo/NCIT_C18469>;
+		rdfs:comment "Temporary, non-covalent binding between protein molecules. Protein-protein interactions occur as a result of intermolecular physical forces and spatial complementation between domains or motifs. This interaction can be either homotypic or heterotypic and effect protein structure, conformation, and function.[source: NCIT]"^^xsd:string ;
+		rdfs:label "protein-protein interaction"^^xsd:string ;
+		skos:altLabel "PPI"^^xsd:string.
+
+:hasFunctionalInteractionScore rdf:type owl:ObjectProperty, owl:FunctionalProperty;
+			rdfs:range :Score;
+			rdfs:domain :ProteinProteinInteraction ;
+			rdfs:label "has functional interaction score"^^xsd:string;
+			rdfs:comment "It states a protein-protein functional interaction score."^^xsd:string.
+
+
+:hasPhysicalInteractionScore rdf:type owl:ObjectProperty, owl:FunctionalProperty;
+			rdfs:range :Score;
+			rdfs:domain :ProteinProteinInteraction ;
+			rdfs:label "has physical interaction score"^^xsd:string;
+			rdfs:comment "It states a protein-protein physical interaction score."^^xsd:string.
+
+
+:Score rdf:type owl:Class;
+		rdfs:label "score"^^xsd:string;
+		rdfs:comment "Class to define a set of any type of score values."^^xsd:string.
+
+
+:hasProtein rdf:type owl:ObjectProperty;
+			rdfs:range orth:Protein;
+			rdfs:domain [ rdf:type owl:Class ;
+                    owl:unionOf ( :ProteinProteinInteraction
+                                  :PPIEnrichment  )
+                                     ] ;  
+			rdfs:label "has protein"^^xsd:string ;
+			rdfs:comment "It states a protein that is part of or contained in the subject."^^xsd:string.
+
+:combinedScore	rdf:type owl:DatatypeProperty, owl:FunctionalProperty ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;				
+                rdfs:label "combined score"^^xsd:string ;
+                rdfs:comment "The combined score is computed by combining the probabilities from the different evidence channels  and corrected for the probability of randomly observing an interaction. The combined score is computed from the partial scores (e.g. fusion score, experimental score)."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "score"^^xsd:string.
+
+:neighborhoodScore	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "gene neighborhood score"^^xsd:string ;
+                rdfs:comment "The neighborhood score is computed from the inter-gene nucleotide count."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "nscore"^^xsd:string.
+
+
+:fusionScore	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "gene fusion score"^^xsd:string ;
+                rdfs:comment "The gene fusion score is derived from fused proteins in other species."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "fscore"^^xsd:string.
+
+:phylogeneticScore	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "phylogenetic profile score"^^xsd:string ;
+                rdfs:comment "The cooccurence score of the phyletic profile that is derived from similar absence/presence patterns of genes."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "pscore"^^xsd:string.
+
+:coexpressionScore	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "coexpression score"^^xsd:string ;
+                rdfs:comment "The coexpression score is derived from similar pattern of mRNA expression measured by DNA arrays and similar technologies."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "ascore"^^xsd:string.
+
+:experimentalScore	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "experimental score"^^xsd:string ;
+                rdfs:comment "The experimental score is derived from experimental data, such as, affinity chromatography."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "escore"^^xsd:string.
+
+:databaseScore	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "database score"^^xsd:string ;
+                rdfs:comment "The database score is derived from curated data of various databases."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "dscore"^^xsd:string.
+
+:textMiningScore rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+				rdfs:subPropertyOf :partialScore ;
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;			
+                rdfs:label "text mining score"^^xsd:string ;
+                rdfs:comment "The textmining score is derived from the co-occurrence of gene/protein names in abstracts."^^xsd:string;
+                rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/15608232>;
+                skos:altLabel "tscore"^^xsd:string.
+
+:partialScore  rdf:type owl:DatatypeProperty ; 
+				rdfs:range xsd:double;
+				rdfs:domain :Score ;
+				rdfs:label "partial score"^^xsd:string ;
+                rdfs:comment "The partial scores used to compute the combined scores."^^xsd:string.
+####
+#### Terms added after considering STRING Web API: "Retrieving similarity scores of the protein set" and "Retrieving best similarity hits between species"
+####
+
+###  http://purl.org/net/orth#HomologyRelation
+orth:HomologyRelation rdf:type owl:Class ;
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                        owl:onProperty orth:hasHomologousMember ;
+                                        owl:allValuesFrom orth:SequenceUnit
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty orth:inDataset ;
+                                        owl:allValuesFrom orth:OrthologyDataset
+                                      ] ;
+                      rdfs:comment "This class represents homology relations among sequence units (e.g genes, proteins or gene regions)."@en ;
+                      rdfs:label "homology relation"@en ;
+                      <http://www.w3.org/2004/02/skos/core#altLabel> "homologous relation"@en .
+
+###  http://purl.org/net/orth#hasHomologousMember
+orth:hasHomologousMember rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf sio:SIO_000028 ;
+                         owl:inverseOf orth:isHomologousMember ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( orth:HomologsCluster
+                                                     orth:HomologyRelation
+                                                   )
+                                     ] ;
+                         rdfs:range [ rdf:type owl:Class ;
+                                      owl:unionOf ( orth:HomologsCluster
+                                                    orth:SequenceUnit
+                                                  )
+                                    ] ;
+                         rdfs:comment "Property that permits to define the membership of a cluster of homologs or a sequence unit to a clusters of homologs."@en ;
+                         rdfs:label "has homologous member"@en .
+
+###  http://purl.org/net/orth#isHomologousMember
+orth:isHomologousMember rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf obo:RO_0002350 ;
+                        rdfs:comment "Inverse of has homologous member. This property permits to find the cluster in which a cluster or sequence unit is included."@en ;
+                        rdfs:label "is homologous member"@en .
+
+###  http://purl.obolibrary.org/obo/RO_0002350
+obo:RO_0002350 rdf:type owl:ObjectProperty ;
+               rdfs:comment "Is member of is a mereological relation between a item and a collection."@en ;
+               rdfs:isDefinedBy "http://purl.obolibrary.org/obo/ro.owl" ;
+               rdfs:label "member of"@en .
+
+###  http://semanticscience.org/resource/SIO_000028
+sio:SIO_000028 rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty ,
+                        owl:ReflexiveProperty ;
+               rdfs:comment "has part is a transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part."@en ;
+               rdfs:isDefinedBy "http://semanticscience.org/ontology/sio.owl" ;
+               rdfs:label "has part"@en .
+
+###  http://purl.obolibrary.org/obo/CDAO_0000178
+obo:CDAO_0000178 rdf:type owl:ObjectProperty ;
+                 owl:inverseOf obo:CDAO_0000194 ;
+                 rdfs:comment "Generic 'has' property."@en ;
+                 rdfs:label "has"^^xsd:string .
+
+###  http://purl.org/net/orth#hasHomologyData
+orth:hasHomologyData rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf obo:CDAO_0000178 ;
+                     owl:inverseOf orth:inDataset ;
+                     rdfs:domain orth:OrthologyDataset ;
+                     rdfs:range [ rdf:type owl:Class ;
+                                  owl:unionOf ( orth:HomologsCluster
+                                                orth:HomologyRelation
+                                              )
+                                ] ;
+                     rdfs:comment "Inverse property of inDataset.  It permits to retrieve  the clusters or homology relations included in a particular dataset."@en ;
+                     rdfs:label "has homology data"@en .
+
+###  http://purl.org/net/orth#inDataset
+orth:inDataset rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( orth:HomologsCluster
+                                           orth:HomologyRelation
+                                         )
+                           ] ;
+               rdfs:range orth:OrthologyDataset ;
+               rdfs:comment "Property that provides the dataset associated with a gene tree node"@en ;
+               rdfs:label "in dataset"@en .    
+
+###  http://purl.org/net/orth#HomologsCluster
+orth:HomologsCluster rdf:type owl:Class ;
+                     rdfs:comment "Set of homologous sequences"@en ;
+                     rdfs:label "Cluster of homologous sequences"@en ;
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "Cluster of homologs"@en ,
+                                                                    "homologous group"@en ,
+                                                                    "homologs cluster"@en .
+
+:bitscore rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+				rdfs:range xsd:double;
+				rdfs:domain orth:HomologyRelation ;			
+                rdfs:label "bit-score"^^xsd:string ;
+                rdfs:comment "Smith-Waterman alignment bit-score."^^xsd:string;
+                rdfs:seeAlso <https://en.wikipedia.org/wiki/Smith–Waterman_algorithm>;
+                skos:altLabel "bitscore"^^xsd:string.
+
+###  http://purl.org/net/orth#hasHomolog
+orth:hasHomolog rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf obo:CDAO_0000178 ;
+                rdf:type owl:SymmetricProperty ;
+                rdfs:domain orth:SequenceUnit ;
+                rdfs:range orth:SequenceUnit ;
+                rdfs:comment "Homologous pairwise relation between sequence units (e.g.: genes, proteins or gene regions). For example, A Gene(A) hasHomolog Gene(B). This property can be materialized or inferred by applying a logical rule."@en ;
+                rdfs:label "has homolog"@en ;
+                <http://www.w3.org/2004/02/skos/core#altLabel> "is homologous to"@en .
+
+###  http://purl.obolibrary.org/obo/CDAO_0000178
+obo:CDAO_0000178 rdf:type owl:ObjectProperty ;
+                 owl:inverseOf obo:CDAO_0000194 ;
+                 rdfs:comment "Generic 'has' property."@en ;
+                 rdfs:label "has"^^xsd:string .
+
+###  http://purl.obolibrary.org/obo/CDAO_0000194
+obo:CDAO_0000194 rdf:type owl:ObjectProperty ;
+                 rdfs:label "part_of"^^xsd:string .
+
+
+####
+#### Terms added after considering STRING Web API: Getting protein-protein interaction enrichment
+####             
+###  http://purl.obolibrary.org/obo/OBI_0000175
+obo:OBI_0000175 rdf:type owl:Class ;
+                obo:IAO_0000111 "p-value"@en ;
+                obo:IAO_0000112 """PMID:19696660
+in contrast to the in-vivo data AT-III increased significantly from
+113.5% at baseline to 117% after 4 days (n = 10, P-value= 0.02; Table 2)."""^^xsd:string ;
+                obo:IAO_0000115 "A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone."@en ;
+                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/P-value"^^xsd:string ;
+                rdfs:label "p-value"@en ;
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/obi/2020-04-23/obi.owl> ;
+                skos:inScheme <http://purl.obolibrary.org/obo/obi.owl> ;
+                terms:license <http://creativecommons.org/licenses/by/4.0/> .
+
+:pvalue a owl:DatatypeProperty, owl:FunctionalProperty ;
+		skos:relatedMatch <http://purl.obolibrary.org/obo/OBI_0000175>;
+		rdfs:comment "P-value for statistical significance. For example, in STRING DB, the significance of the network having more interactions than expected.";
+		rdfs:label "p-value";
+		rdfs:range xsd:double ;
+		rdfs:domain :PPIEnrichment. 
+
+
+:nodeNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
+		rdfs:comment "The number of proteins in the network, that are representend with nodes.";
+		rdfs:label "protein amount";
+		rdfs:range xsd:nonNegativeInteger ;
+		rdfs:domain :PPIEnrichment. 	
+
+
+:edgeNumber	a owl:DatatypeProperty, owl:FunctionalProperty ;
+		rdfs:comment "The number of edges in the network.";
+		rdfs:label "edge amount";
+		rdfs:range xsd:nonNegativeInteger ;
+		rdfs:domain :PPIEnrichment. 	
+
+:averageNodeDegree a owl:DatatypeProperty, owl:FunctionalProperty ;
+		rdfs:comment "The mean degree of the node in the network.";
+		rdfs:label "average node degree";
+		rdfs:range xsd:double ;
+		rdfs:domain :PPIEnrichment. 
+
+:localClusteringCoefficient a owl:DatatypeProperty, owl:FunctionalProperty ;
+		rdfs:comment "The average local clustering coefficient.";
+		rdfs:label "edge amount";
+		rdfs:range xsd:double ;
+		rdfs:domain :PPIEnrichment. 
+
+:expectedEdgeNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
+		rdfs:comment "The expected number of edges based on the nodes degrees.";
+		rdfs:label "expected edge amount";
+		rdfs:range xsd:nonNegativeInteger ;
+		rdfs:domain :PPIEnrichment.
+
+:PPIEnrichment rdf:type owl:Class;
+		rdfs:comment "Even in the absence of annotated proteins (e.g. in novel genomes) databases such as STRING can tell if the subset of proteins is functionally related, that is, if it is enriched in interactions in comparison to the background proteome-wide interaction distribution.";
+		rdfs:label "protein-protein interaction enrichment".
+
+####
+#### Terms added after considering STRING Web API:Getting current STRING version
+####
+#It states STRING DB homepage as an instance of database (sio:SIO_000750)
+<https://string-db.org> rdf:type sio:SIO_000750;
+						rdfs:label "STRING database"^^xsd:string;
+						rdfs:comment "STRING is a database of known and predicted protein-protein interactions. The interactions include direct (physical) and indirect (functional) associations; they stem from computational prediction, from knowledge transfer between organisms, and from interactions aggregated from other (primary) databases."^^xsd:string.
+
+terms:hasVersion
+    terms:description "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Is Version Of."@en ;
+    terms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Has Version"@en .
+
+terms:isVersionOf
+    terms:description "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Has Version."@en ;
+    terms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "A related resource of which the described resource is a version, edition, or adaptation."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Is Version Of"@en .
+
+terms:issued
+    terms:description "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."@en ;
+    terms:issued "2000-07-11"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a rdf:Property ;
+    rdfs:comment "Date of formal issuance of the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Date Issued"@en  .
+
+#version 
+###  http://www.w3.org/ns/radion#version
+rad:version rdf:type owl:DatatypeProperty ;
+            rdfs:range rdfs:Literal ;
+            rdfs:comment "The version number or other designation of the Asset; the value should be a free text string"@en ;
+            rdfs:isDefinedBy <https://joinup.ec.europa.eu/asset/radion/description> ;
+            rdfs:label "version"@en .
+
+####
+#### Terms added after considering STRING Web API: Getting functional annotation
+####
+
+### For GO and uniprot keyword annotations. Remark: the description field is actually stated with rdfs:label / skos:prefLabel property.
+###  http://purl.uniprot.org/core/classifiedWith
+up:classifiedWith rdf:type owl:ObjectProperty ;
+                    rdfs:domain up:Protein ;
+                    rdfs:range up:Concept ;
+                    rdfs:comment "A concept that classifies this resource."^^xsd:string ;
+                    rdfs:isDefinedBy <http://purl.uniprot.org/core/> ;
+                    rdfs:label "classified with"^^xsd:string .
+
+###  http://purl.uniprot.org/core/Concept
+up:Concept rdf:type owl:Class ;
+             rdfs:subClassOf  [ rdf:type owl:Restriction ;
+                               owl:onProperty up:replaces ;
+                               owl:allValuesFrom up:Concept
+                             ] ;
+             rdfs:comment "A concept used to classify resources."^^xsd:string ;
+             rdfs:isDefinedBy <http://purl.uniprot.org/core/> ;
+             rdfs:label "Concept"^^xsd:string .
+ 
+#To state to which schema (e.g. vocabulary) a up:Concept belongs to.
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty ;
+              rdfs:range skos:ConceptScheme ;
+              rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+              rdfs:label "is in scheme"@en ;
+              skos:definition "Relates a resource (for example a concept) to a concept scheme in which it is included."@en ;
+              skos:scopeNote "A concept may be a member of more than one concept scheme."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class ;
+                   rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+                   rdfs:label "Concept Scheme"@en ;
+                   skos:definition "A set of concepts, optionally including statements about semantic relationships between those concepts."@en ;
+                   skos:example "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies."@en ;
+                   skos:scopeNote "A concept scheme may be defined to include concepts from different sources."@en .     
+
+up:database rdf:type owl:ObjectProperty, owl:FunctionalProperty   ;
+rdfs:label	"database"^^xsd:string;
+rdfs:isDefinedBy	up: ;
+rdfs:range	up:Database ;
+rdfs:domain	up:Resource .
+
+
+up:Resource rdf:type owl:Class ;
+rdfs:label	"Resource"^^xsd:string ;
+rdfs:comment	"A life science resource."^^xsd:string ;
+rdfs:isDefinedBy	up: .
+
+up:Database rdf:type owl:Class ;
+rdfs:label	"Database (description of)"^^xsd:string ;
+rdfs:comment	"Metadata for a life science database."^^xsd:string ;
+rdfs:isDefinedBy	up: ;
+rdfs:seeAlso	<http://www.uniprot.org/manual/cross_references_section> .
+
+ <http://purl.obolibrary.org/obo/go.owl> a skos:ConceptScheme;
+ rdfs:label "Gene Ontology"^^xsd:string;
+ rdfs:seeAlso <http://geneontology.org>.
+
+<https://www.uniprot.org/docs/keywlist.txt> a skos:ConceptScheme;
+ rdfs:label "UniProt Keywords"^^xsd:string;
+ rdfs:seeAlso <https://www.uniprot.org/help/keywords>.
+
+<http://purl.uniprot.org/database/Pfam> a sio:SIO_000750, up:Database;
+ rdfs:label "Pfam protein domain database"^^xsd:string;
+ rdfs:seeAlso <https://pfam.xfam.org>;
+ skos:altLabel	"Pfam"^^xsd:string.
+
+
+<http://purl.uniprot.org/database/KEGG> a sio:SIO_000750, up:Database;
+ rdfs:label "KEGG: Kyoto Encyclopedia of Genes and Genomes"^^xsd:string;
+ rdfs:seeAlso <https://www.genome.jp/kegg/>;
+ rdfs:altLabel "KEGG"^^xsd:string.
+
+<http://purl.uniprot.org/database/Reactome>  a  sio:SIO_000750, up:Database;
+ rdfs:label "Reactome - a knowledgebase of biological pathways and processes"^^xsd:string;
+ rdfs:seeAlso <https://reactome.org>;
+ skos:altLabel "Reactome"^^xsd:string.
+
+ <https://pubmed.ncbi.nlm.nih.gov> a  sio:SIO_000750;
+ rdfs:label "PubMed publications"^^xsd:string;
+ rdfs:altLabel "PubMed"^^xsd:string;
+ rdfs:seeAlso <https://pubmed.ncbi.nlm.nih.gov>. 
+
+ <http://purl.uniprot.org/database/InterPro>  a  sio:SIO_000750, up:Database;
+ rdfs:label "Integrated resource of protein families, domains and functional sites"^^xsd:string;
+ rdfs:seeAlso <https://www.ebi.ac.uk/interpro>;
+ skos:altLabel "InterPro"^^xsd:string. 
+
+<http://purl.uniprot.org/database/SMART>  a  sio:SIO_000750, up:Database;
+ rdfs:label "Simple Modular Architecture Research Tool; a protein domain database"^^xsd:string;
+ skos:altLabel "SMART"^^xsd:string;
+ rdfs:seeAlso <http://smart.embl.de/>. 
+

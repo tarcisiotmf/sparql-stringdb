@@ -1,0 +1,3906 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="resources/primer.css" media="screen" />    <link rel="stylesheet" href="resources/rec.css" media="screen" />    <link rel="stylesheet" href="resources/extra.css" media="screen" />    <link rel="stylesheet" href="resources/owl.css" media="screen" />    <title>STRING database WEB API Ontology Documentation</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"TechArticle","url":"http://purl.org/stringdb","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://purl.org/stringdb","name":"http://purl.org/stringdb", "headline":"Document describing the ontology http://purl.org/stringdb", "datePublished":"Mon Dec 21 13:23:56 CET 2020", "version":"STRING database Web API ontology", "author":[{"@type":"Person","name":"http://purl.org/query/tarcisiomf","url":"http://purl.org/query/tarcisiomf"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+ $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+
+
+<dl>
+<dt>This version:</dt>
+<dd><a href="http://purl.org/stringdb/0.2">http://purl.org/stringdb/0.2</a></dd>
+<dt>Latest version:</dt>
+<dd><a href="http://purl.org/stringdb">http://purl.org/stringdb</a></dd>
+<dt>Revision:</dt>
+<dd>STRING database Web API ontology</dd>
+<dt>Authors:</dt>
+<dd><a href="http://purl.org/query/tarcisiomf">http://purl.org/query/tarcisiomf</a></dd>
+
+<dt>Imported Ontologies:</dt>
+<dd><a href="http://purl.org/lscr">lscr</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.json" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.xml" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License: </dt><dd><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank"><img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/CC-Zero-badge.svg/75px-CC-Zero-badge.svg.png" alt="https://creativecommons.org/publicdomain/zero/1.0/"  /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSEvaluation/OOPSeval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>http://purl.org/query/tarcisiomf. Revision: STRING database Web API ontology. Retrieved from: http://purl.org/stringdb/0.2</dd>
+</dl>
+
+<hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+This ontology was designed to represent and describe the information retrieved from the STRING database WEB API functions. The WEB API functions are fully described at <a href="https://string-db.org/help/api/">https://string-db.org/help/api/</a>.</span>
+</div>
+<div id="toc"></div> 
+
+<!--INTRODUCTION SECTION-->
+    <div id="introduction"><h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology is composed of graph patterns and terms from several vocabularies such as ORTH ontology, UniProt core ontology, and OBO foundry ontologies. Nevertheless, solely terms and patterns relevant to represent the information retrieved from STRING DB Web API is depicted in this document and ontology. Therefore, we do not directly import (via owl:import) the external ontologies.</span>
+<div id="namespacedeclarations">
+<h3 id="ns" class="list">Namespace declarations</h3>
+<div id="ns" align="center">
+<table>
+<caption> <a href="#ns"> Table 1</a>: Namespaces used in the document </caption>
+<tbody>
+<tr><td><b>:</b></td><td>&lt;http://purl.org/stringdb#&gt;</td></tr>
+<tr><td><b>2020-04-23</b></td><td>&lt;http://purl.obolibrary.org/obo/obi/2020-04-23&gt;</td></tr>
+<tr><td><b>lscr</b></td><td>&lt;http://purl.org/lscr#&gt;</td></tr>
+<tr><td><b>owl</b></td><td>&lt;http://www.w3.org/2002/07/owl#&gt;</td></tr>
+<tr><td><b>wiki</b></td><td>&lt;https://en.wikipedia.org/wiki&gt;</td></tr>
+<tr><td><b>xsd</b></td><td>&lt;http://www.w3.org/2001/XMLSchema#&gt;</td></tr>
+<tr><td><b>skos</b></td><td>&lt;http://www.w3.org/2004/02/skos/core#&gt;</td></tr>
+<tr><td><b>rdfs</b></td><td>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</td></tr>
+<tr><td><b>taxonomy</b></td><td>&lt;http://purl.uniprot.org/taxonomy&gt;</td></tr>
+<tr><td><b>manual</b></td><td>&lt;http://www.uniprot.org/manual&gt;</td></tr>
+<tr><td><b>database</b></td><td>&lt;http://purl.uniprot.org/database&gt;</td></tr>
+<tr><td><b>ensembl</b></td><td>&lt;http://rdf.ebi.ac.uk/terms/ensembl&gt;</td></tr>
+<tr><td><b>pubmed</b></td><td>&lt;http://www.ncbi.nlm.nih.gov/pubmed&gt;</td></tr>
+<tr><td><b>docs</b></td><td>&lt;https://www.uniprot.org/docs&gt;</td></tr>
+<tr><td><b>dct</b></td><td>&lt;http://purl.org/dc/terms/&gt;</td></tr>
+<tr><td><b>purl-org</b></td><td>&lt;http://purl.org&gt;</td></tr>
+<tr><td><b>foaf</b></td><td>&lt;http://xmlns.com/foaf/0.1/&gt;</td></tr>
+<tr><td><b>orth</b></td><td>&lt;http://purl.org/net/orth#&gt;</td></tr>
+<tr><td><b>oboInOwl</b></td><td>&lt;http://www.geneontology.org/formats/oboInOwl&gt;</td></tr>
+<tr><td><b>sio</b></td><td>&lt;http://semanticscience.org/resource/&gt;</td></tr>
+<tr><td><b>query</b></td><td>&lt;http://purl.org/query#&gt;</td></tr>
+<tr><td><b>www-ebi-ac-uk</b></td><td>&lt;https://www.ebi.ac.uk&gt;</td></tr>
+<tr><td><b>efo</b></td><td>&lt;http://www.ebi.ac.uk/efo&gt;</td></tr>
+<tr><td><b>up</b></td><td>&lt;http://purl.uniprot.org/core/&gt;</td></tr>
+<tr><td><b>help</b></td><td>&lt;https://www.uniprot.org/help&gt;</td></tr>
+<tr><td><b>rdf</b></td><td>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</td></tr>
+<tr><td><b>obo</b></td><td>&lt;http://purl.obolibrary.org/obo/&gt;</td></tr>
+<tr><td><b>dc</b></td><td>&lt;http://purl.org/dc/elements/1.1/&gt;</td></tr>
+<tr><td><b>snap</b></td><td>&lt;http://www.ifomis.org/bfo/1.1/snap&gt;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">String database ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul class="hlist">
+   <li>
+      <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/Concept" title="http://purl.uniprot.org/core/Concept">Concept</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme"
+         title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a>
+   </li>
+   <li>
+      <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/SO_0000704" title="http://purl.obolibrary.org/obo/SO_0000704">Gene</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#Gene" title="http://purl.org/net/orth#Gene">
+         <span>gene</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#HomologyRelation" title="http://purl.org/net/orth#HomologyRelation">homology relation</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/BFO_0000040" title="http://purl.obolibrary.org/obo/BFO_0000040">material entity</a>
+   </li>
+   <li>
+      <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/NCIT_C14250" title="http://purl.obolibrary.org/obo/NCIT_C14250">Organism</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#Organism" title="http://purl.org/net/orth#Organism">Organism</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/SO_0000104" title="http://purl.obolibrary.org/obo/SO_0000104">polypeptide</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/Protein" title="http://purl.uniprot.org/core/Protein">
+         <span>protein</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://rdf.ebi.ac.uk/terms/ensembl/protein" title="http://rdf.ebi.ac.uk/terms/ensembl/protein">
+         <span>protein</span>
+      </a>
+   </li>
+   <li>
+      <a href="#ProteinProteinInteraction"
+         title="http://purl.org/stringdb#ProteinProteinInteraction">protein-protein interaction</a>
+   </li>
+   <li>
+      <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/Resource" title="http://purl.uniprot.org/core/Resource">Resource</a>
+   </li>
+   <li>
+      <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/Taxon" title="http://purl.uniprot.org/core/Taxon">Taxon</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/SO_0000673" title="http://purl.obolibrary.org/obo/SO_0000673">Transcript</a>
+   </li>
+</ul><h4>Object Properties</h4><ul class="hlist">
+   <li>
+      <a href="#http://purl.uniprot.org/core/classifiedWith" title="http://purl.uniprot.org/core/classifiedWith">classified with</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/RO_0001018" title="http://purl.obolibrary.org/obo/RO_0001018">contained in</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/database" title="http://purl.uniprot.org/core/database">database</a>
+   </li>
+   <li>
+      <a href="#functionallyInteractsWith"
+         title="http://purl.org/stringdb#functionallyInteractsWith">functionally interacts with</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/CDAO_0000178" title="http://purl.obolibrary.org/obo/CDAO_0000178">has</a>
+   </li>
+   <li>
+      <a href="#hasFunctionalInteractionScore"
+         title="http://purl.org/stringdb#hasFunctionalInteractionScore">has functional interaction score</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#hasHomolog" title="http://purl.org/net/orth#hasHomolog">has homolog</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#hasHomologousMember" title="http://purl.org/net/orth#hasHomologousMember">has homologous member</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#hasHomologyData" title="http://purl.org/net/orth#hasHomologyData">has homology data</a>
+   </li>
+   <li>
+      <a href="#hasNetworkImage" title="http://purl.org/stringdb#hasNetworkImage">has network image</a>
+   </li>
+   <li>
+      <a href="#http://semanticscience.org/resource/SIO_000028" title="http://semanticscience.org/resource/SIO_000028">has part</a>
+   </li>
+   <li>
+      <a href="#hasPhysicalInteractionScore"
+         title="http://purl.org/stringdb#hasPhysicalInteractionScore">has physical interaction score</a>
+   </li>
+   <li>
+      <a href="#hasProtein" title="http://purl.org/stringdb#hasProtein">has protein</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#inDataset" title="http://purl.org/net/orth#inDataset">in dataset</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/RO_0002162" title="http://purl.obolibrary.org/obo/RO_0002162">in taxon</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/RO_0002434" title="http://purl.obolibrary.org/obo/RO_0002434">interacts with</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#isHomologousMember" title="http://purl.org/net/orth#isHomologousMember">is homologous member</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/RO_0002350" title="http://purl.obolibrary.org/obo/RO_0002350">member of</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/net/orth#organism" title="http://purl.org/net/orth#organism">
+         <span>organism</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/CDAO_0000194" title="http://purl.obolibrary.org/obo/CDAO_0000194">part_of</a>
+   </li>
+   <li>
+      <a href="#physicallyInteractsWith" title="http://purl.org/stringdb#physicallyInteractsWith">physically interacts with</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/rank" title="http://purl.uniprot.org/core/rank">
+         <span>rank</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/replaces" title="http://purl.uniprot.org/core/replaces">
+         <span>replaces</span>
+      </a>
+   </li>
+</ul><h4>Data Properties</h4><ul class="hlist">
+   <li>
+      <a href="#averageNodeDegree" title="http://purl.org/stringdb#averageNodeDegree">average node degree</a>
+   </li>
+   <li>
+      <a href="#bitscore" title="http://purl.org/stringdb#bitscore">bit-score</a>
+   </li>
+   <li>
+      <a href="#coexpressionScore" title="http://purl.org/stringdb#coexpressionScore">coexpression score</a>
+   </li>
+   <li>
+      <a href="#combinedScore" title="http://purl.org/stringdb#combinedScore">combined score</a>
+   </li>
+   <li>
+      <a href="#databaseScore" title="http://purl.org/stringdb#databaseScore">database score</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/elements/1.1/description" title="http://purl.org/dc/elements/1.1/description">Description</a>
+   </li>
+   <li>
+      <a href="#edgeNumber" title="http://purl.org/stringdb#edgeNumber">edge amount</a>
+   </li>
+   <li>
+      <a href="#localClusteringCoefficient"
+         title="http://purl.org/stringdb#localClusteringCoefficient">edge amount</a>
+   </li>
+   <li>
+      <a href="#expectedEdgeNumber" title="http://purl.org/stringdb#expectedEdgeNumber">expected edge amount</a>
+   </li>
+   <li>
+      <a href="#experimentalScore" title="http://purl.org/stringdb#experimentalScore">experimental score</a>
+   </li>
+   <li>
+      <a href="#format" title="http://purl.org/stringdb#format">format</a>
+   </li>
+   <li>
+      <a href="#fusionScore" title="http://purl.org/stringdb#fusionScore">gene fusion score</a>
+   </li>
+   <li>
+      <a href="#neighborhoodScore" title="http://purl.org/stringdb#neighborhoodScore">gene neighborhood score</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/mnemonic" title="http://purl.uniprot.org/core/mnemonic">Mnemonic</a>
+   </li>
+   <li>
+      <a href="#networkFlavor" title="http://purl.org/stringdb#networkFlavor">network flavor</a>
+   </li>
+   <li>
+      <a href="#networkType" title="http://purl.org/stringdb#networkType">network type</a>
+   </li>
+   <li>
+      <a href="#pvalue" title="http://purl.org/stringdb#pvalue">p-value</a>
+   </li>
+   <li>
+      <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+   </li>
+   <li>
+      <a href="#phylogeneticScore" title="http://purl.org/stringdb#phylogeneticScore">phylogenetic profile score</a>
+   </li>
+   <li>
+      <a href="#nodeNumber" title="http://purl.org/stringdb#nodeNumber">protein amount</a>
+   </li>
+   <li>
+      <a href="#resolution" title="http://purl.org/stringdb#resolution">resolution</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/core/scientificName" title="http://purl.uniprot.org/core/scientificName">scientific name</a>
+   </li>
+   <li>
+      <a href="#textMiningScore" title="http://purl.org/stringdb#textMiningScore">text mining score</a>
+   </li>
+</ul><h4>Annotation Properties</h4><ul class="hlist">
+   <li>
+      <a href="#http://www.w3.org/2000/01/rdf-schema#altLabel" title="http://www.w3.org/2000/01/rdf-schema#altLabel">
+         <span>alt label</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#altLabel" title="http://www.w3.org/2004/02/skos/core#altLabel">alternative label</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#closeMatch" title="http://www.w3.org/2004/02/skos/core#closeMatch">
+         <span>close match</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/elements/1.1/creator" title="http://purl.org/dc/elements/1.1/creator">
+         <span>creator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000232" title="http://purl.obolibrary.org/obo/IAO_0000232">curator note</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued">Date Issued</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000115" title="http://purl.obolibrary.org/obo/IAO_0000115">definition</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition">definition</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">Description</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000116" title="http://purl.obolibrary.org/obo/IAO_0000116">editor note</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#example" title="http://www.w3.org/2004/02/skos/core#example">
+         <span>example</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000112" title="http://purl.obolibrary.org/obo/IAO_0000112">example of usage</a>
+   </li>
+   <li>
+      <a href="#http://www.geneontology.org/formats/oboInOwl#hasAlternativeId"
+         title="http://www.geneontology.org/formats/oboInOwl#hasAlternativeId">has_alternative_id</a>
+   </li>
+   <li>
+      <a href="#http://www.geneontology.org/formats/oboInOwl#hasDbXref"
+         title="http://www.geneontology.org/formats/oboInOwl#hasDbXref">has_dbxref</a>
+   </li>
+   <li>
+      <a href="#http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+         title="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym">has_exact_synonym</a>
+   </li>
+   <li>
+      <a href="#http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+         title="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym">has_related_synonym</a>
+   </li>
+   <li>
+      <a href="#http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+         title="http://www.geneontology.org/formats/oboInOwl#hasSynonym">has_synonym</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000111" title="http://purl.obolibrary.org/obo/IAO_0000111">
+         <span>i a o 0000111</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000119" title="http://purl.obolibrary.org/obo/IAO_0000119">
+         <span>i a o 0000119</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">License</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2002/07/owl#maxQualifiedCardinality"
+         title="http://www.w3.org/2002/07/owl#maxQualifiedCardinality">
+         <span>max qualified cardinality</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#note" title="http://www.w3.org/2004/02/skos/core#note">
+         <span>note</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://xmlns.com/foaf/0.1/page" title="http://xmlns.com/foaf/0.1/page">
+         <span>page</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#prefLabel" title="http://www.w3.org/2004/02/skos/core#prefLabel">preferred label</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#relatedMatch" title="http://www.w3.org/2004/02/skos/core#relatedMatch">
+         <span>related match</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2004/02/skos/core#scopeNote" title="http://www.w3.org/2004/02/skos/core#scopeNote">
+         <span>scope note</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefEMBLSequence" title="http://purl.org/lscr#xrefEMBLSequence">see also EMBL sequence</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefEnsembl" title="http://purl.org/lscr#xrefEnsembl">see also Ensembl cross-reference</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefEnsemblGene" title="http://purl.org/lscr#xrefEnsemblGene">see also Ensembl gene</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefEnsemblProtein" title="http://purl.org/lscr#xrefEnsemblProtein">see also Ensembl protein</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefEnsemblTranscript" title="http://purl.org/lscr#xrefEnsemblTranscript">see also Ensembl transcript</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefMBGD" title="http://purl.org/lscr#xrefMBGD">see also MBGD cross-reference</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefMBGDGene" title="http://purl.org/lscr#xrefMBGDGene">see also MBGD gene</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefMBGDGroup" title="http://purl.org/lscr#xrefMBGDGroup">see also MBGD gene group</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefNCBI" title="http://purl.org/lscr#xrefNCBI">see also NCBI cross-reference</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefNCBIGene" title="http://purl.org/lscr#xrefNCBIGene">see also NCBI gene</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefNCBIProtein" title="http://purl.org/lscr#xrefNCBIProtein">see also NCBI protein</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefNCBIRefSeq" title="http://purl.org/lscr#xrefNCBIRefSeq">see also NCBI RefSeq</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefOMA" title="http://purl.org/lscr#xrefOMA">see also OMA cross-reference</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefOMAGroup" title="http://purl.org/lscr#xrefOMAGroup">see also OMA group</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefOMAProtein" title="http://purl.org/lscr#xrefOMAProtein">see also OMA protein</a>
+   </li>
+   <li>
+      <a href="#http://purl.org/lscr#xrefUniprot" title="http://purl.org/lscr#xrefUniprot">see also UniProt cross-reference</a>
+   </li>
+   <li>
+      <a href="#http://www.ebi.ac.uk/efo/source_definition" title="http://www.ebi.ac.uk/efo/source_definition">
+         <span>source definition</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/IAO_0000117" title="http://purl.obolibrary.org/obo/IAO_0000117">term editor</a>
+   </li>
+</ul><h4>Named Individuals</h4><ul class="hlist">
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/go.owl" title="http://purl.obolibrary.org/obo/go.owl">Gene Ontology</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/taxonomy/9606" title="http://purl.uniprot.org/taxonomy/9606">Homo sapiens</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/database/InterPro" title="http://purl.uniprot.org/database/InterPro">Integrated resource of protein families, domains and functional sites</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/database/KEGG" title="http://purl.uniprot.org/database/KEGG">KEGG: Kyoto Encyclopedia of Genes and Genomes</a>
+   </li>
+   <li>
+      <a href="#http://purl.obolibrary.org/obo/OBI_0000175" title="http://purl.obolibrary.org/obo/OBI_0000175">
+         <span>p-value</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/database/Pfam" title="http://purl.uniprot.org/database/Pfam">Pfam protein domain database</a>
+   </li>
+   <li>
+      <a href="#https://pubmed.ncbi.nlm.nih.gov" title="https://pubmed.ncbi.nlm.nih.gov">PubMed publications</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/database/Reactome" title="http://purl.uniprot.org/database/Reactome">Reactome - a knowledgebase of biological pathways and processes</a>
+   </li>
+   <li>
+      <a href="#http://purl.uniprot.org/database/SMART" title="http://purl.uniprot.org/database/SMART">Simple Modular Architecture Research Tool; a protein domain database</a>
+   </li>
+   <li>
+      <a href="#https://string-db.org" title="https://string-db.org">STRING database</a>
+   </li>
+   <li>
+      <a href="#https://www.uniprot.org/docs/keywlist.txt" title="https://www.uniprot.org/docs/keywlist.txt">UniProt Keywords</a>
+   </li>
+</ul><iframe align="center" width="100%" height ="500px" src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">String database ontology: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+<a href="#fig1">Figure 1</a> illustrates a data schema to represent protein information from the STRING database (DB). The information it can structure is restricted to the one available from STRING database WEB API are defined(see <a href="https://string-db.org/help/api/">https://string-db.org/help/api/</a>). In <a href="#fig2">Figure 2</a>, similarly to <a href="#fig1">Figure 1</a>, we abstractly illustrate the triple patterns to represent the core information from the STRING DB: protein to protein interactions.</span>
+
+</div>
+  <div  align="center">
+<figure id="fig1">
+<p><img src="fig1.png" class="imagedesc"/>
+<figcaption><a href="#fig1">Figure 1</a>. An abstract view of how the triple-based graph is contructed to represent the protein to protein interactions from STRING database. Edges are RDF properties and nodes with the prefix xsd:, and the other nodes are IRIs (Internationalized Resource Identifier) that represents intances of a class such as <a href="#http://purl.org/net/orth#Protein">orth:Protein</a>. Prefixes (e.g. xsd:) are defined at <a href="#ns">Table 1</a>. To simplify the illustration, in this figure, we merged two nodes into one rdfs:Literal node that has two incoming edges, rdfs:label and skos:prefLabel, but they may assign different literal values. Moreover, :functionallyInteractsWith  and :physicallyInteractsWith properties must relate two different instances of orth:Protein. Both of them are <a href="https://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties">irreflexive object properties</a>.</figcaption></figure>
+</div> 
+
+<div  align="center">
+<figure id="fig2">
+<p><img src="fig2.png" class="imagedesc"/>
+<figcaption><a href="#fig2">Figure 2</a>. An abstract view of how the triple-based graph is contructed to represent the protein information from STRING database. Edges are RDF properties and nodes with the prefix xsd: and the rdfs:Literal values are literals, the other nodes are IRIs (Internationalized Resource Identifier) that represents intances of a class such as <a href="#http://purl.org/net/orth#Protein">orth:Protein</a>. Prefixes are defined at <a href="#ns">Table 1</a>. To simplify the illustration, in this figure, we merged eight nodes into one xsd:double node that has eight incoming edges (i.e. :combinedScore, :neighborhoodScore, :fusionScore, :phylogeneticScore, :coexpressionScore ?ascore, :experimentalScore, :databaseScore, and :textMiningScore) but they may assign different numerical values.</figcaption></figure>
+</div> 
+
+<a href="#fig3">Figure 3</a> contains triple patterns to represent the functional annotations obtained from <a href="https://string-db.org/cgi/help.pl?subpage=api%23retrieving-functional-annotation">Retrieving functional annotation</a>. STRING maps several databases onto its proteins, this includes: Gene Ontology, KEGG pathways, UniProt Keywords, Pfam domains, InterPro domains, and SMART domains. When it is possible instances IRIs and graph patterns are the same as defined in the UniProt RDF store. For example, we reuse the http://purl.uniprot.org/database/Reactome IRI to represent the Reactome database. Indeed, this IRI is an instance of up:Database as defined in the UniProt RDF store.
+
+<div  align="center">
+<figure id="fig3">
+<p><img src="fig3.png" class="imagedesc"/>
+<figcaption><a href="#fig3">Figure 3</a>. An abstract view of how the triple-based graph is contructed to represent the functional annotations stated in the STRING database. Edges are RDF properties and nodes with the rdfs:Literal values are literals, the other nodes are IRIs (Internationalized Resource Identifier) that represents intances of a class such as <a href="#http://purl.org/net/orth#Protein">orth:Protein</a>. Prefixes are defined at <a href="#ns">Table 1</a>.</figcaption></figure>
+</div> 
+
+</div>
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross reference for String database ontology classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by String database ontology.
+<div id="classes">
+   <h3 id="classes-headline" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/Concept" title="http://purl.uniprot.org/core/Concept">Concept</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme"
+            title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a>
+      </li>
+      <li>
+         <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/SO_0000704" title="http://purl.obolibrary.org/obo/SO_0000704">Gene</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#Gene" title="http://purl.org/net/orth#Gene">
+            <span>gene</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#HomologyRelation" title="http://purl.org/net/orth#HomologyRelation">homology relation</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/BFO_0000040" title="http://purl.obolibrary.org/obo/BFO_0000040">material entity</a>
+      </li>
+      <li>
+         <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/NCIT_C14250" title="http://purl.obolibrary.org/obo/NCIT_C14250">Organism</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#Organism" title="http://purl.org/net/orth#Organism">Organism</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/SO_0000104" title="http://purl.obolibrary.org/obo/SO_0000104">polypeptide</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/Protein" title="http://purl.uniprot.org/core/Protein">
+            <span>protein</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://rdf.ebi.ac.uk/terms/ensembl/protein" title="http://rdf.ebi.ac.uk/terms/ensembl/protein">
+            <span>protein</span>
+         </a>
+      </li>
+      <li>
+         <a href="#ProteinProteinInteraction"
+            title="http://purl.org/stringdb#ProteinProteinInteraction">protein-protein interaction</a>
+      </li>
+      <li>
+         <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/Resource" title="http://purl.uniprot.org/core/Resource">Resource</a>
+      </li>
+      <li>
+         <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/Taxon" title="http://purl.uniprot.org/core/Taxon">Taxon</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/SO_0000673" title="http://purl.obolibrary.org/obo/SO_0000673">Transcript</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://purl.org/net/orth#HomologsCluster">
+      <h3>Cluster of homologous sequences<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#HomologsCluster</p>
+      <div class="comment">
+         <span class="markdown">Set of homologous sequences</span>
+      </div>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/lscr#xrefOMAGroup">see also OMA group</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/Concept">
+      <h3>Concept<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/Concept</p>
+      <div class="comment">
+         <span class="markdown">A concept used to classify resources.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.uniprot.org/core/">http://purl.uniprot.org/core/</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd/>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/classifiedWith" title="http://purl.uniprot.org/core/classifiedWith">classified with</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#ConceptScheme">
+      <h3>Concept Scheme<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#ConceptScheme</p>
+      <div class="comment">
+         <span class="markdown">A set of concepts, optionally including statements about semantic relationships between those concepts.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+         </dd>
+      </dl>
+      <dl>
+         <dt>Example</dt>
+         <dd>
+            <pre>Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.</pre>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>has members</dt>
+         <dd>
+            <a href="#http://purl.obolibrary.org/obo/go.owl" title="http://purl.obolibrary.org/obo/go.owl">Gene Ontology</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/InterPro" title="http://purl.uniprot.org/database/InterPro">Integrated resource of protein families, domains and functional sites</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/KEGG" title="http://purl.uniprot.org/database/KEGG">KEGG: Kyoto Encyclopedia of Genes and Genomes</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/Pfam" title="http://purl.uniprot.org/database/Pfam">Pfam protein domain database</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#https://pubmed.ncbi.nlm.nih.gov" title="https://pubmed.ncbi.nlm.nih.gov">PubMed publications</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/Reactome" title="http://purl.uniprot.org/database/Reactome">Reactome - a knowledgebase of biological pathways and processes</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/SMART" title="http://purl.uniprot.org/database/SMART">Simple Modular Architecture Research Tool; a protein domain database</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#https://www.uniprot.org/docs/keywlist.txt" title="https://www.uniprot.org/docs/keywlist.txt">UniProt Keywords</a>
+            <sup class="type-ni" title="named individual">ni</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://semanticscience.org/resource/SIO_000750">
+      <h3>database<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://semanticscience.org/resource/SIO_000750</p>
+      <div class="comment">
+         <span class="markdown">A database is a data store such as relational, hierarchical and graph databases.</span>
+      </div>
+      <dl class="description">
+         <dt>has members</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/database/InterPro" title="http://purl.uniprot.org/database/InterPro">Integrated resource of protein families, domains and functional sites</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/KEGG" title="http://purl.uniprot.org/database/KEGG">KEGG: Kyoto Encyclopedia of Genes and Genomes</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/Pfam" title="http://purl.uniprot.org/database/Pfam">Pfam protein domain database</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#https://pubmed.ncbi.nlm.nih.gov" title="https://pubmed.ncbi.nlm.nih.gov">PubMed publications</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/Reactome" title="http://purl.uniprot.org/database/Reactome">Reactome - a knowledgebase of biological pathways and processes</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#https://string-db.org" title="https://string-db.org">STRING database</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/SMART" title="http://purl.uniprot.org/database/SMART">Simple Modular Architecture Research Tool; a protein domain database</a>
+            <sup class="type-ni" title="named individual">ni</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/Database">
+      <h3>Database (description of)<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/Database</p>
+      <div class="comment">
+         <span class="markdown">Metadata for a life science database.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.uniprot.org/core/">http://purl.uniprot.org/core/</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/database" title="http://purl.uniprot.org/core/database">database</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>has members</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/database/InterPro" title="http://purl.uniprot.org/database/InterPro">Integrated resource of protein families, domains and functional sites</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/KEGG" title="http://purl.uniprot.org/database/KEGG">KEGG: Kyoto Encyclopedia of Genes and Genomes</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/Pfam" title="http://purl.uniprot.org/database/Pfam">Pfam protein domain database</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/Reactome" title="http://purl.uniprot.org/database/Reactome">Reactome - a knowledgebase of biological pathways and processes</a>
+            <sup class="type-ni" title="named individual">ni</sup>, <a href="#http://purl.uniprot.org/database/SMART" title="http://purl.uniprot.org/database/SMART">Simple Modular Architecture Research Tool; a protein domain database</a>
+            <sup class="type-ni" title="named individual">ni</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/SO_0000704">
+      <h3>Gene<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/SO_0000704</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/lscr#xrefEnsemblGene">see also Ensembl gene</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#Gene">
+      <h3>gene<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#Gene</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#HomologyRelation">
+      <h3>homology relation<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#HomologyRelation</p>
+      <div class="comment">
+         <span class="markdown">This class represents homology relations among sequence units (e.g genes, proteins or gene regions).</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd/>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#bitscore" title="http://purl.org/stringdb#bitscore">bit-score</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/BFO_0000040">
+      <h3>material entity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/BFO_0000040</p>
+      <div class="comment">
+         <span class="markdown">A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.obolibrary.org/obo/bfo.owl">http://purl.obolibrary.org/obo/bfo.owl</a>
+         </dd>
+      </dl>
+      <dl>
+         <dt>Example</dt>
+         <dd>
+            <pre>A heart, a human, a fly, a microarray.</pre>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>is equivalent to</dt>
+         <dd>
+            <span class="dotted"
+                  title="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity">material entity</span>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://purl.obolibrary.org/obo/RO_0002434" title="http://purl.obolibrary.org/obo/RO_0002434">interacts with</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.obolibrary.org/obo/RO_0002434" title="http://purl.obolibrary.org/obo/RO_0002434">interacts with</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="NetworkImage">
+      <h3>network image<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#NetworkImage</p>
+      <div class="comment">
+         <span class="markdown">A network image of interactions among  proteins, that illustrates a neighborhood surrounding one or more proteins.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd/>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#format" title="http://purl.org/stringdb#format">format</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#networkFlavor" title="http://purl.org/stringdb#networkFlavor">network flavor</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#networkType" title="http://purl.org/stringdb#networkType">network type</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#resolution" title="http://purl.org/stringdb#resolution">resolution</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasNetworkImage" title="http://purl.org/stringdb#hasNetworkImage">has network image</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/NCIT_C14250">
+      <h3>Organism<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/NCIT_C14250</p>
+      <dl class="description">
+         <dt>is equivalent to</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#Organism" title="http://purl.org/net/orth#Organism">Organism</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#Organism">
+      <h3>Organism<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#Organism</p>
+      <div class="comment">
+         <span class="markdown">A living being, such as an animal, a plant, a bacterium, or a fungus., Any individual living (or previously living) being. Example: animal, human being. An organim can be associated to a taxon such as "Homo Sapiens", NCBI taxonomy identifier: 9606.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd/>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#organism" title="http://purl.org/net/orth#organism">organism</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/SO_0000104">
+      <h3>polypeptide<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/SO_0000104</p>
+      <dl class="description">
+         <dt>is equivalent to</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#Protein">
+      <h3>Protein<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#Protein</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#functionallyInteractsWith"
+               title="http://purl.org/stringdb#functionallyInteractsWith">functionally interacts with</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasNetworkImage" title="http://purl.org/stringdb#hasNetworkImage">has network image</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#physicallyInteractsWith" title="http://purl.org/stringdb#physicallyInteractsWith">physically interacts with</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#functionallyInteractsWith"
+               title="http://purl.org/stringdb#functionallyInteractsWith">functionally interacts with</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasProtein" title="http://purl.org/stringdb#hasProtein">has protein</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#physicallyInteractsWith" title="http://purl.org/stringdb#physicallyInteractsWith">physically interacts with</a>
+            <sup class="type-op" title="object property">op</sup>, <span class="dotted" title="http://purl.org/lscr#xrefOMAProtein">see also OMA protein</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/Protein">
+      <h3>protein<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/Protein</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/classifiedWith" title="http://purl.uniprot.org/core/classifiedWith">classified with</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/lscr#xrefUniprot">see also UniProt cross-reference</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://rdf.ebi.ac.uk/terms/ensembl/protein">
+      <h3>protein<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://rdf.ebi.ac.uk/terms/ensembl/protein</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/lscr#xrefEnsemblProtein">see also Ensembl protein</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ProteinProteinInteraction">
+      <h3>protein-protein interaction<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#ProteinProteinInteraction</p>
+      <div class="comment">
+         <span class="markdown">Temporary, non-covalent binding between protein molecules. Protein-protein interactions occur as a result of intermolecular physical forces and spatial complementation between domains or motifs. This interaction can be either homotypic or heterotypic and effect protein structure, conformation, and function.[source: NCIT]</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd/>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasFunctionalInteractionScore"
+               title="http://purl.org/stringdb#hasFunctionalInteractionScore">has functional interaction score</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasPhysicalInteractionScore"
+               title="http://purl.org/stringdb#hasPhysicalInteractionScore">has physical interaction score</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PPIEnrichment">
+      <h3>protein-protein interaction enrichment<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#PPIEnrichment</p>
+      <div class="comment">
+         <span class="markdown">Even in the absence of annotated proteins (e.g. in novel genomes) databases such as STRING can tell if the subset of proteins is functionally related, that is, if it is enriched in interactions in comparison to the background proteome-wide interaction distribution.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#averageNodeDegree" title="http://purl.org/stringdb#averageNodeDegree">average node degree</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#edgeNumber" title="http://purl.org/stringdb#edgeNumber">edge amount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#localClusteringCoefficient"
+               title="http://purl.org/stringdb#localClusteringCoefficient">edge amount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#expectedEdgeNumber" title="http://purl.org/stringdb#expectedEdgeNumber">expected edge amount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#pvalue" title="http://purl.org/stringdb#pvalue">p-value</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#nodeNumber" title="http://purl.org/stringdb#nodeNumber">protein amount</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/Resource">
+      <h3>Resource<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/Resource</p>
+      <div class="comment">
+         <span class="markdown">A life science resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.uniprot.org/core/">http://purl.uniprot.org/core/</a>
+         </dd>
+      </dl>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/database" title="http://purl.uniprot.org/core/database">database</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Score">
+      <h3>score<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#Score</p>
+      <div class="comment">
+         <span class="markdown">Class to define a set of any type of score values.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#coexpressionScore" title="http://purl.org/stringdb#coexpressionScore">coexpression score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#combinedScore" title="http://purl.org/stringdb#combinedScore">combined score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#databaseScore" title="http://purl.org/stringdb#databaseScore">database score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#experimentalScore" title="http://purl.org/stringdb#experimentalScore">experimental score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#fusionScore" title="http://purl.org/stringdb#fusionScore">gene fusion score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#neighborhoodScore" title="http://purl.org/stringdb#neighborhoodScore">gene neighborhood score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#phylogeneticScore" title="http://purl.org/stringdb#phylogeneticScore">phylogenetic profile score</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#textMiningScore" title="http://purl.org/stringdb#textMiningScore">text mining score</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasFunctionalInteractionScore"
+               title="http://purl.org/stringdb#hasFunctionalInteractionScore">has functional interaction score</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasPhysicalInteractionScore"
+               title="http://purl.org/stringdb#hasPhysicalInteractionScore">has physical interaction score</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#SequenceUnit">
+      <h3>Sequence unit<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#SequenceUnit</p>
+      <div class="comment">
+         <span class="markdown">protein or DNA sequence as a unit of comparison</span>
+      </div>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#hasHomolog" title="http://purl.org/net/orth#hasHomolog">has homolog</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/net/orth#organism" title="http://purl.org/net/orth#organism">organism</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.org/net/orth#hasHomolog" title="http://purl.org/net/orth#hasHomolog">has homolog</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/Taxon">
+      <h3>Taxon<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/Taxon</p>
+      <div class="comment">
+         <span class="markdown">An element of a taxonomy for classifying life forms.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd/>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/rank" title="http://purl.uniprot.org/core/rank">rank</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.uniprot.org/core/replaces" title="http://purl.uniprot.org/core/replaces">replaces</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/replaces" title="http://purl.uniprot.org/core/replaces">replaces</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>has members</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/taxonomy/9606" title="http://purl.uniprot.org/taxonomy/9606">Homo sapiens</a>
+            <sup class="type-ni" title="named individual">ni</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/SO_0000673">
+      <h3>Transcript<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/SO_0000673</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <dl class="description">
+         <dt>is in range of</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/lscr#xrefEnsemblTranscript">see also Ensembl transcript</span>
+         </dd>
+      </dl>
+   </div>
+</div><div id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://purl.uniprot.org/core/classifiedWith" title="http://purl.uniprot.org/core/classifiedWith">classified with</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/RO_0001018" title="http://purl.obolibrary.org/obo/RO_0001018">contained in</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/database" title="http://purl.uniprot.org/core/database">database</a>
+      </li>
+      <li>
+         <a href="#functionallyInteractsWith"
+            title="http://purl.org/stringdb#functionallyInteractsWith">functionally interacts with</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/CDAO_0000178" title="http://purl.obolibrary.org/obo/CDAO_0000178">has</a>
+      </li>
+      <li>
+         <a href="#hasFunctionalInteractionScore"
+            title="http://purl.org/stringdb#hasFunctionalInteractionScore">has functional interaction score</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#hasHomolog" title="http://purl.org/net/orth#hasHomolog">has homolog</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#hasHomologousMember" title="http://purl.org/net/orth#hasHomologousMember">has homologous member</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#hasHomologyData" title="http://purl.org/net/orth#hasHomologyData">has homology data</a>
+      </li>
+      <li>
+         <a href="#hasNetworkImage" title="http://purl.org/stringdb#hasNetworkImage">has network image</a>
+      </li>
+      <li>
+         <a href="#http://semanticscience.org/resource/SIO_000028" title="http://semanticscience.org/resource/SIO_000028">has part</a>
+      </li>
+      <li>
+         <a href="#hasPhysicalInteractionScore"
+            title="http://purl.org/stringdb#hasPhysicalInteractionScore">has physical interaction score</a>
+      </li>
+      <li>
+         <a href="#hasProtein" title="http://purl.org/stringdb#hasProtein">has protein</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#inDataset" title="http://purl.org/net/orth#inDataset">in dataset</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/RO_0002162" title="http://purl.obolibrary.org/obo/RO_0002162">in taxon</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/RO_0002434" title="http://purl.obolibrary.org/obo/RO_0002434">interacts with</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#isHomologousMember" title="http://purl.org/net/orth#isHomologousMember">is homologous member</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/RO_0002350" title="http://purl.obolibrary.org/obo/RO_0002350">member of</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/net/orth#organism" title="http://purl.org/net/orth#organism">
+            <span>organism</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/CDAO_0000194" title="http://purl.obolibrary.org/obo/CDAO_0000194">part_of</a>
+      </li>
+      <li>
+         <a href="#physicallyInteractsWith" title="http://purl.org/stringdb#physicallyInteractsWith">physically interacts with</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/rank" title="http://purl.uniprot.org/core/rank">
+            <span>rank</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/replaces" title="http://purl.uniprot.org/core/replaces">
+            <span>replaces</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="http://purl.uniprot.org/core/classifiedWith">
+      <h3>classified with<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/classifiedWith</p>
+      <div class="comment">
+         <span class="markdown">A concept that classifies this resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.uniprot.org/core/">http://purl.uniprot.org/core/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Protein" title="http://purl.uniprot.org/core/Protein">protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Concept" title="http://purl.uniprot.org/core/Concept">Concept</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/RO_0001018">
+      <h3>contained in<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/RO_0001018</p>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/database">
+      <h3>database<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/database</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.uniprot.org/core/">http://purl.uniprot.org/core/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Resource" title="http://purl.uniprot.org/core/Resource">Resource</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="functionallyInteractsWith">
+      <h3>functionally interacts with<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#functionallyInteractsWith</p>
+      <div class="comment">
+         <span class="markdown">It states a protein that functionally interacts with another one, a pairwise relationship.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> symmetric, irreflexive</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/RO_0002434" title="http://purl.obolibrary.org/obo/RO_0002434">interacts with</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/CDAO_0000178">
+      <h3>has<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/CDAO_0000178</p>
+      <div class="comment">
+         <span class="markdown">Generic 'has' property.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#hasHomolog" title="http://purl.org/net/orth#hasHomolog">has homolog</a>
+               <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/net/orth#hasHomologyData" title="http://purl.org/net/orth#hasHomologyData">has homology data</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/CDAO_0000194" title="http://purl.obolibrary.org/obo/CDAO_0000194">part_of</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasFunctionalInteractionScore">
+      <h3>has functional interaction score<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#hasFunctionalInteractionScore</p>
+      <div class="comment">
+         <span class="markdown">It states a protein-protein functional interaction score.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#ProteinProteinInteraction"
+                  title="http://purl.org/stringdb#ProteinProteinInteraction">protein-protein interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#hasHomolog">
+      <h3>has homolog<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#hasHomolog</p>
+      <div class="comment">
+         <span class="markdown">Homologous pairwise relation between sequence units (e.g.: genes, proteins or gene regions). For example, A Gene(A) hasHomolog Gene(B). This property can be materialized or inferred by applying a logical rule.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> symmetric</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/CDAO_0000178" title="http://purl.obolibrary.org/obo/CDAO_0000178">has</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#hasHomologousMember">
+      <h3>has homologous member<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#hasHomologousMember</p>
+      <div class="comment">
+         <span class="markdown">Property that permits to define the membership of a cluster of homologs or a sequence unit to a clusters of homologs.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://semanticscience.org/resource/SIO_000028" title="http://semanticscience.org/resource/SIO_000028">has part</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#http://purl.org/net/orth#HomologyRelation" title="http://purl.org/net/orth#HomologyRelation">homology relation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#isHomologousMember" title="http://purl.org/net/orth#isHomologousMember">is homologous member</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#hasHomologyData">
+      <h3>has homology data<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#hasHomologyData</p>
+      <div class="comment">
+         <span class="markdown">Inverse property of inDataset.  It permits to retrieve  the clusters or homology relations included in a particular dataset.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/CDAO_0000178" title="http://purl.obolibrary.org/obo/CDAO_0000178">has</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <span class="dotted" title="http://purl.org/net/orth#OrthologyDataset">orthology dataset</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#http://purl.org/net/orth#HomologyRelation" title="http://purl.org/net/orth#HomologyRelation">homology relation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#inDataset" title="http://purl.org/net/orth#inDataset">in dataset</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasNetworkImage">
+      <h3>has network image<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#hasNetworkImage</p>
+      <div class="comment">
+         <span class="markdown">It states a network image of interactions among  proteins (e.g. from STRING database). The image is composed of a neighborhood surrounding one or more proteins.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://semanticscience.org/resource/SIO_000028">
+      <h3>has part<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://semanticscience.org/resource/SIO_000028</p>
+      <div class="comment">
+         <span class="markdown">has part is a transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> transitive, reflexive</p>
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#hasHomologousMember" title="http://purl.org/net/orth#hasHomologousMember">has homologous member</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasPhysicalInteractionScore">
+      <h3>has physical interaction score<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#hasPhysicalInteractionScore</p>
+      <div class="comment">
+         <span class="markdown">It states a protein-protein physical interaction score.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#ProteinProteinInteraction"
+                  title="http://purl.org/stringdb#ProteinProteinInteraction">protein-protein interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasProtein">
+      <h3>has protein<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#hasProtein</p>
+      <div class="comment">
+         <span class="markdown">It states a protein that is part of or contained in the subject.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#ProteinProteinInteraction"
+                  title="http://purl.org/stringdb#ProteinProteinInteraction">protein-protein interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#inDataset">
+      <h3>in dataset<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#inDataset</p>
+      <div class="comment">
+         <span class="markdown">Property that provides the dataset associated with a gene tree node</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+               <sup class="type-c" title="class">c</sup> 
+               <span class="logic">or</span> 
+               <a href="#http://purl.org/net/orth#HomologyRelation" title="http://purl.org/net/orth#HomologyRelation">homology relation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://purl.org/net/orth#OrthologyDataset">orthology dataset</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#hasHomologyData" title="http://purl.org/net/orth#hasHomologyData">has homology data</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/RO_0002162">
+      <h3>in taxon<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/RO_0002162</p>
+      <div class="comment">
+         <span class="markdown">Connects a biological entity to its taxon of origin.</span>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/RO_0002434">
+      <h3>interacts with<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/RO_0002434</p>
+      <div class="comment">
+         <span class="markdown">A relationship that holds between two entities in which the processes executed by the two entities are causally connected.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> symmetric</p>
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#functionallyInteractsWith"
+                  title="http://purl.org/stringdb#functionallyInteractsWith">functionally interacts with</a>
+               <sup class="type-op" title="object property">op</sup>, <a href="#physicallyInteractsWith" title="http://purl.org/stringdb#physicallyInteractsWith">physically interacts with</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/BFO_0000040" title="http://purl.obolibrary.org/obo/BFO_0000040">material entity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/BFO_0000040" title="http://purl.obolibrary.org/obo/BFO_0000040">material entity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#isHomologousMember">
+      <h3>is homologous member<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#isHomologousMember</p>
+      <div class="comment">
+         <span class="markdown">Inverse of has homologous member. This property permits to find the cluster in which a cluster or sequence unit is included.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/RO_0002350" title="http://purl.obolibrary.org/obo/RO_0002350">member of</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#hasHomologousMember" title="http://purl.org/net/orth#hasHomologousMember">has homologous member</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#inScheme">
+      <h3>is in scheme<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#inScheme</p>
+      <div class="comment">
+         <span class="markdown">Relates a resource (for example a concept) to a concept scheme in which it is included.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme"
+                  title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/RO_0002350">
+      <h3>member of<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/RO_0002350</p>
+      <div class="comment">
+         <span class="markdown">Is member of is a mereological relation between a item and a collection.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#isHomologousMember" title="http://purl.org/net/orth#isHomologousMember">is homologous member</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/net/orth#organism">
+      <h3>organism<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/net/orth#organism</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#SequenceUnit" title="http://purl.org/net/orth#SequenceUnit">Sequence unit</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Organism" title="http://purl.org/net/orth#Organism">Organism</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/CDAO_0000194">
+      <h3>part_of<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/CDAO_0000194</p>
+      <div class="description">
+         <dl>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/CDAO_0000178" title="http://purl.obolibrary.org/obo/CDAO_0000178">has</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="physicallyInteractsWith">
+      <h3>physically interacts with<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#physicallyInteractsWith</p>
+      <div class="comment">
+         <span class="markdown">It states a protein that physically interacts with another one, a pairwise relationship.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> symmetric, irreflexive</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/RO_0002434" title="http://purl.obolibrary.org/obo/RO_0002434">interacts with</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/rank">
+      <h3>rank<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/rank</p>
+      <div class="comment">
+         <span class="markdown">The rank of a taxon.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Taxon" title="http://purl.uniprot.org/core/Taxon">Taxon</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://purl.uniprot.org/core/Rank">rank</span>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/replaces">
+      <h3>replaces<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/replaces</p>
+      <div class="comment">
+         <span class="markdown">A resource that is replaced by this resource.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Taxon" title="http://purl.uniprot.org/core/Taxon">Taxon</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Taxon" title="http://purl.uniprot.org/core/Taxon">Taxon</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="dataproperties">
+   <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#averageNodeDegree" title="http://purl.org/stringdb#averageNodeDegree">average node degree</a>
+      </li>
+      <li>
+         <a href="#bitscore" title="http://purl.org/stringdb#bitscore">bit-score</a>
+      </li>
+      <li>
+         <a href="#coexpressionScore" title="http://purl.org/stringdb#coexpressionScore">coexpression score</a>
+      </li>
+      <li>
+         <a href="#combinedScore" title="http://purl.org/stringdb#combinedScore">combined score</a>
+      </li>
+      <li>
+         <a href="#databaseScore" title="http://purl.org/stringdb#databaseScore">database score</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/dc/elements/1.1/description" title="http://purl.org/dc/elements/1.1/description">Description</a>
+      </li>
+      <li>
+         <a href="#edgeNumber" title="http://purl.org/stringdb#edgeNumber">edge amount</a>
+      </li>
+      <li>
+         <a href="#localClusteringCoefficient"
+            title="http://purl.org/stringdb#localClusteringCoefficient">edge amount</a>
+      </li>
+      <li>
+         <a href="#expectedEdgeNumber" title="http://purl.org/stringdb#expectedEdgeNumber">expected edge amount</a>
+      </li>
+      <li>
+         <a href="#experimentalScore" title="http://purl.org/stringdb#experimentalScore">experimental score</a>
+      </li>
+      <li>
+         <a href="#format" title="http://purl.org/stringdb#format">format</a>
+      </li>
+      <li>
+         <a href="#fusionScore" title="http://purl.org/stringdb#fusionScore">gene fusion score</a>
+      </li>
+      <li>
+         <a href="#neighborhoodScore" title="http://purl.org/stringdb#neighborhoodScore">gene neighborhood score</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/mnemonic" title="http://purl.uniprot.org/core/mnemonic">Mnemonic</a>
+      </li>
+      <li>
+         <a href="#networkFlavor" title="http://purl.org/stringdb#networkFlavor">network flavor</a>
+      </li>
+      <li>
+         <a href="#networkType" title="http://purl.org/stringdb#networkType">network type</a>
+      </li>
+      <li>
+         <a href="#pvalue" title="http://purl.org/stringdb#pvalue">p-value</a>
+      </li>
+      <li>
+         <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+      </li>
+      <li>
+         <a href="#phylogeneticScore" title="http://purl.org/stringdb#phylogeneticScore">phylogenetic profile score</a>
+      </li>
+      <li>
+         <a href="#nodeNumber" title="http://purl.org/stringdb#nodeNumber">protein amount</a>
+      </li>
+      <li>
+         <a href="#resolution" title="http://purl.org/stringdb#resolution">resolution</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/core/scientificName" title="http://purl.uniprot.org/core/scientificName">scientific name</a>
+      </li>
+      <li>
+         <a href="#textMiningScore" title="http://purl.org/stringdb#textMiningScore">text mining score</a>
+      </li>
+   </ul>
+   <div class="entity" id="averageNodeDegree">
+      <h3>average node degree<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#averageNodeDegree</p>
+      <div class="comment">
+         <span class="markdown">The mean degree of the node in the network.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="bitscore">
+      <h3>bit-score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#bitscore</p>
+      <div class="comment">
+         <span class="markdown">Smith-Waterman alignment bit-score.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#HomologyRelation" title="http://purl.org/net/orth#HomologyRelation">homology relation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="coexpressionScore">
+      <h3>coexpression score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#coexpressionScore</p>
+      <div class="comment">
+         <span class="markdown">The coexpression score is derived from similar pattern of mRNA expression measured by DNA arrays and similar technologies.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="combinedScore">
+      <h3>combined score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#combinedScore</p>
+      <div class="comment">
+         <span class="markdown">The combined score is computed by combining the probabilities from the different evidence channels  and corrected for the probability of randomly observing an interaction. The combined score is computed from the partial scores (e.g. fusion score, experimental score).</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="databaseScore">
+      <h3>database score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#databaseScore</p>
+      <div class="comment">
+         <span class="markdown">The database score is derived from curated data of various databases.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/dc/elements/1.1/description">
+      <h3>Description<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/dc/elements/1.1/description</p>
+      <div class="comment">
+         <span class="markdown">An account of the resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#Literal">literal</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="edgeNumber">
+      <h3>edge amount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#edgeNumber</p>
+      <div class="comment">
+         <span class="markdown">The number of edges in the network.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">non negative integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="localClusteringCoefficient">
+      <h3>edge amount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#localClusteringCoefficient</p>
+      <div class="comment">
+         <span class="markdown">The average local clustering coefficient.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="expectedEdgeNumber">
+      <h3>expected edge amount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#expectedEdgeNumber</p>
+      <div class="comment">
+         <span class="markdown">The expected number of edges based on the nodes degrees.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">non negative integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="experimentalScore">
+      <h3>experimental score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#experimentalScore</p>
+      <div class="comment">
+         <span class="markdown">The experimental score is derived from experimental data, such as, affinity chromatography.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="format">
+      <h3>format<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#format</p>
+      <div class="comment">
+         <span class="markdown">The file format (e.g. png, svg).</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="fusionScore">
+      <h3>gene fusion score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#fusionScore</p>
+      <div class="comment">
+         <span class="markdown">The gene fusion score is derived from fused proteins in other species.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="neighborhoodScore">
+      <h3>gene neighborhood score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#neighborhoodScore</p>
+      <div class="comment">
+         <span class="markdown">The neighborhood score is computed from the inter-gene nucleotide count.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/mnemonic">
+      <h3>Mnemonic<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/mnemonic</p>
+      <div class="comment">
+         <span class="markdown">A easy to remember identifier for a UniProtKB entry, but it is not a stable identifier and should not be used by programs to identify entries.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="networkFlavor">
+      <h3>network flavor<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#networkFlavor</p>
+      <div class="comment">
+         <span class="markdown">The style of edges in the network: evidence, confidence, actions</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>{ "actions" , "confidence" , "evidence" }</dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="networkType">
+      <h3>network type<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#networkType</p>
+      <div class="comment">
+         <span class="markdown">The network type: functional or physical</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>{ "functional" , "physical" }</dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="pvalue">
+      <h3>p-value<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#pvalue</p>
+      <div class="comment">
+         <span class="markdown">P-value for statistical significance. For example, in STRING DB, the significance of the network having more interactions than expected.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="partialScore">
+      <h3>partial score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#partialScore</p>
+      <div class="comment">
+         <span class="markdown">The partial scores used to compute the combined scores.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#coexpressionScore" title="http://purl.org/stringdb#coexpressionScore">coexpression score</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#databaseScore" title="http://purl.org/stringdb#databaseScore">database score</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#experimentalScore" title="http://purl.org/stringdb#experimentalScore">experimental score</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#fusionScore" title="http://purl.org/stringdb#fusionScore">gene fusion score</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#neighborhoodScore" title="http://purl.org/stringdb#neighborhoodScore">gene neighborhood score</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#phylogeneticScore" title="http://purl.org/stringdb#phylogeneticScore">phylogenetic profile score</a>
+               <sup class="type-dp" title="data property">dp</sup>, <a href="#textMiningScore" title="http://purl.org/stringdb#textMiningScore">text mining score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="phylogeneticScore">
+      <h3>phylogenetic profile score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#phylogeneticScore</p>
+      <div class="comment">
+         <span class="markdown">The cooccurence score of the phyletic profile that is derived from similar absence/presence patterns of genes.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="nodeNumber">
+      <h3>protein amount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#nodeNumber</p>
+      <div class="comment">
+         <span class="markdown">The number of proteins in the network, that are representend with nodes.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PPIEnrichment" title="http://purl.org/stringdb#PPIEnrichment">protein-protein interaction enrichment</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted"
+                     title="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">non negative integer</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="resolution">
+      <h3>resolution<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#resolution</p>
+      <div class="comment">
+         <span class="markdown">The image resolution as a qualitative value (e.g. high resolution).</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#NetworkImage" title="http://purl.org/stringdb#NetworkImage">network image</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>{ "high" , "low" , "medium" , "unknown" }</dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/core/scientificName">
+      <h3>scientific name<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/core/scientificName</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>http://purl.org/stringdb</dd>
+      </dl>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#string">string</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="textMiningScore">
+      <h3>text mining score<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/stringdb#textMiningScore</p>
+      <div class="comment">
+         <span class="markdown">The textmining score is derived from the co-occurrence of gene/protein names in abstracts.</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:</strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#partialScore" title="http://purl.org/stringdb#partialScore">partial score</a>
+               <sup class="type-dp" title="data property">dp</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Score" title="http://purl.org/stringdb#Score">score</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2001/XMLSchema#double">double</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="annotationproperties">
+   <h3 id="annotationproperties" class="list">Annotation Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://www.w3.org/2000/01/rdf-schema#altLabel" title="http://www.w3.org/2000/01/rdf-schema#altLabel">
+            <span>alt label</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#altLabel" title="http://www.w3.org/2004/02/skos/core#altLabel">alternative label</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#closeMatch" title="http://www.w3.org/2004/02/skos/core#closeMatch">
+            <span>close match</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.org/dc/elements/1.1/creator" title="http://purl.org/dc/elements/1.1/creator">
+            <span>creator</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000232" title="http://purl.obolibrary.org/obo/IAO_0000232">curator note</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/dc/terms/issued" title="http://purl.org/dc/terms/issued">Date Issued</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000115" title="http://purl.obolibrary.org/obo/IAO_0000115">definition</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition">definition</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/dc/terms/description" title="http://purl.org/dc/terms/description">Description</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000116" title="http://purl.obolibrary.org/obo/IAO_0000116">editor note</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#example" title="http://www.w3.org/2004/02/skos/core#example">
+            <span>example</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000112" title="http://purl.obolibrary.org/obo/IAO_0000112">example of usage</a>
+      </li>
+      <li>
+         <a href="#http://www.geneontology.org/formats/oboInOwl#hasAlternativeId"
+            title="http://www.geneontology.org/formats/oboInOwl#hasAlternativeId">has_alternative_id</a>
+      </li>
+      <li>
+         <a href="#http://www.geneontology.org/formats/oboInOwl#hasDbXref"
+            title="http://www.geneontology.org/formats/oboInOwl#hasDbXref">has_dbxref</a>
+      </li>
+      <li>
+         <a href="#http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+            title="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym">has_exact_synonym</a>
+      </li>
+      <li>
+         <a href="#http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+            title="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym">has_related_synonym</a>
+      </li>
+      <li>
+         <a href="#http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+            title="http://www.geneontology.org/formats/oboInOwl#hasSynonym">has_synonym</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000111" title="http://purl.obolibrary.org/obo/IAO_0000111">
+            <span>i a o 0000111</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000119" title="http://purl.obolibrary.org/obo/IAO_0000119">
+            <span>i a o 0000119</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.org/dc/terms/license" title="http://purl.org/dc/terms/license">License</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2002/07/owl#maxQualifiedCardinality"
+            title="http://www.w3.org/2002/07/owl#maxQualifiedCardinality">
+            <span>max qualified cardinality</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#note" title="http://www.w3.org/2004/02/skos/core#note">
+            <span>note</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://xmlns.com/foaf/0.1/page" title="http://xmlns.com/foaf/0.1/page">
+            <span>page</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#prefLabel" title="http://www.w3.org/2004/02/skos/core#prefLabel">preferred label</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#relatedMatch" title="http://www.w3.org/2004/02/skos/core#relatedMatch">
+            <span>related match</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/2004/02/skos/core#scopeNote" title="http://www.w3.org/2004/02/skos/core#scopeNote">
+            <span>scope note</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefEMBLSequence" title="http://purl.org/lscr#xrefEMBLSequence">see also EMBL sequence</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefEnsembl" title="http://purl.org/lscr#xrefEnsembl">see also Ensembl cross-reference</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefEnsemblGene" title="http://purl.org/lscr#xrefEnsemblGene">see also Ensembl gene</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefEnsemblProtein" title="http://purl.org/lscr#xrefEnsemblProtein">see also Ensembl protein</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefEnsemblTranscript" title="http://purl.org/lscr#xrefEnsemblTranscript">see also Ensembl transcript</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefMBGD" title="http://purl.org/lscr#xrefMBGD">see also MBGD cross-reference</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefMBGDGene" title="http://purl.org/lscr#xrefMBGDGene">see also MBGD gene</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefMBGDGroup" title="http://purl.org/lscr#xrefMBGDGroup">see also MBGD gene group</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefNCBI" title="http://purl.org/lscr#xrefNCBI">see also NCBI cross-reference</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefNCBIGene" title="http://purl.org/lscr#xrefNCBIGene">see also NCBI gene</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefNCBIProtein" title="http://purl.org/lscr#xrefNCBIProtein">see also NCBI protein</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefNCBIRefSeq" title="http://purl.org/lscr#xrefNCBIRefSeq">see also NCBI RefSeq</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefOMA" title="http://purl.org/lscr#xrefOMA">see also OMA cross-reference</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefOMAGroup" title="http://purl.org/lscr#xrefOMAGroup">see also OMA group</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefOMAProtein" title="http://purl.org/lscr#xrefOMAProtein">see also OMA protein</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/lscr#xrefUniprot" title="http://purl.org/lscr#xrefUniprot">see also UniProt cross-reference</a>
+      </li>
+      <li>
+         <a href="#http://www.ebi.ac.uk/efo/source_definition" title="http://www.ebi.ac.uk/efo/source_definition">
+            <span>source definition</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/IAO_0000117" title="http://purl.obolibrary.org/obo/IAO_0000117">term editor</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://www.w3.org/2000/01/rdf-schema#altLabel">
+      <h3>alt label<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2000/01/rdf-schema#altLabel</p>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#altLabel">
+      <h3>alternative label<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#altLabel</p>
+      <div class="comment">
+         <span class="markdown">The range of skos:altLabel is the class of RDF plain literals.</span>
+      </div>
+      <div class="comment">
+         <span class="markdown">An alternative lexical label for a resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+         </dd>
+      </dl>
+      <dl>
+         <dt>Example</dt>
+         <dd>
+            <pre>Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel).</pre>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#label">label</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#closeMatch">
+      <h3>close match<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#closeMatch</p>
+   </div>
+   <div class="entity" id="http://purl.org/dc/elements/1.1/creator">
+      <h3>creator<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/dc/elements/1.1/creator</p>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000232">
+      <h3>curator note<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000232</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.obolibrary.org/obo/iao.owl">http://purl.obolibrary.org/obo/iao.owl</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/dc/terms/issued">
+      <h3>Date Issued<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/dc/terms/issued</p>
+      <div class="comment">
+         <span class="markdown">Date of formal issuance of the resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000115">
+      <h3>definition<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000115</p>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#definition">
+      <h3>definition<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#definition</p>
+      <div class="comment">
+         <span class="markdown">A statement or formal explanation of the meaning of a concept.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2004/02/skos/core#note">note</span>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/dc/terms/description">
+      <h3>Description<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/dc/terms/description</p>
+      <div class="comment">
+         <span class="markdown">An account of the resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000116">
+      <h3>editor note<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000116</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.obolibrary.org/obo/iao.owl">http://purl.obolibrary.org/obo/iao.owl</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#example">
+      <h3>example<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#example</p>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000112">
+      <h3>example of usage<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000112</p>
+   </div>
+   <div class="entity" id="http://www.geneontology.org/formats/oboInOwl#hasAlternativeId">
+      <h3>has_alternative_id<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.geneontology.org/formats/oboInOwl#hasAlternativeId</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.geneontology.org/formats/oboInOwl#">http://www.geneontology.org/formats/oboInOwl#</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.geneontology.org/formats/oboInOwl#hasDbXref">
+      <h3>has_dbxref<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.geneontology.org/formats/oboInOwl#hasDbXref</p>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.geneontology.org/formats/oboInOwl#">http://www.geneontology.org/formats/oboInOwl#</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym">
+      <h3>has_exact_synonym<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.geneontology.org/formats/oboInOwl#hasExactSynonym</p>
+      <div class="comment">
+         <span class="markdown">An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.geneontology.org/formats/oboInOwl#">http://www.geneontology.org/formats/oboInOwl#</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+                  title="http://www.geneontology.org/formats/oboInOwl#hasSynonym">has_synonym</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym">
+      <h3>has_related_synonym<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym</p>
+      <div class="comment">
+         <span class="markdown">An alias in which the alias is related the primary class name, but not necessarily broader or narrower. Example: cytochrome bc1 complex is a related synonym of ubiquinol-cytochrome-c reductase activity; virulence is a related synonym of pathogenesis</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.geneontology.org/formats/oboInOwl#">http://www.geneontology.org/formats/oboInOwl#</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+                  title="http://www.geneontology.org/formats/oboInOwl#hasSynonym">has_synonym</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.geneontology.org/formats/oboInOwl#hasSynonym">
+      <h3>has_synonym<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.geneontology.org/formats/oboInOwl#hasSynonym</p>
+      <div class="comment">
+         <span class="markdown">A relation between a class and an alias term.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.geneontology.org/formats/oboInOwl#">http://www.geneontology.org/formats/oboInOwl#</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"
+                  title="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym">has_exact_synonym</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"
+                  title="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym">has_related_synonym</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000111">
+      <h3>i a o 0000111<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000111</p>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000119">
+      <h3>i a o 0000119<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000119</p>
+   </div>
+   <div class="entity" id="http://purl.org/dc/terms/license">
+      <h3>License<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/dc/terms/license</p>
+      <div class="comment">
+         <span class="markdown">A legal document giving official permission to do something with the resource.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/2002/07/owl#maxQualifiedCardinality">
+      <h3>max qualified cardinality<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2002/07/owl#maxQualifiedCardinality</p>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#note">
+      <h3>note<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#note</p>
+      <div class="description">
+         <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://www.w3.org/2004/02/skos/core#definition" title="http://www.w3.org/2004/02/skos/core#definition">definition</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://xmlns.com/foaf/0.1/page">
+      <h3>page<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://xmlns.com/foaf/0.1/page</p>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#prefLabel">
+      <h3>preferred label<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#prefLabel</p>
+      <div class="comment">
+         <span class="markdown">A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.</span>
+      </div>
+      <div class="comment">
+         <span class="markdown">The preferred lexical label for a resource, in a given language.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://www.w3.org/2004/02/skos/core">http://www.w3.org/2004/02/skos/core</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#label">label</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#relatedMatch">
+      <h3>related match<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#relatedMatch</p>
+   </div>
+   <div class="entity" id="http://www.w3.org/2004/02/skos/core#scopeNote">
+      <h3>scope note<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/2004/02/skos/core#scopeNote</p>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefEMBLSequence">
+      <h3>see also EMBL sequence<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefEMBLSequence</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to any EMBL sequence database resource.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">see also</span>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefEnsembl">
+      <h3>see also Ensembl cross-reference<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefEnsembl</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to any Ensembl database resource.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">see also</span>
+            </dd>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefEnsemblGene" title="http://purl.org/lscr#xrefEnsemblGene">see also Ensembl gene</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://purl.org/lscr#xrefEnsemblProtein" title="http://purl.org/lscr#xrefEnsemblProtein">see also Ensembl protein</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://purl.org/lscr#xrefEnsemblTranscript" title="http://purl.org/lscr#xrefEnsemblTranscript">see also Ensembl transcript</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefEnsemblGene">
+      <h3>see also Ensembl gene<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefEnsemblGene</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an Ensembl gene.
+
+URI RDF instance template to assign this property: http://rdf.ebi.ac.uk/resource/ensembl/{ENSEMBL_GENE_ID}. Example: :ANY_URI lscr:xrefEnsemblGene http://rdf.ebi.ac.uk/resource/ensembl/ENSG00000139618</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefEnsembl" title="http://purl.org/lscr#xrefEnsembl">see also Ensembl cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/SO_0000704" title="http://purl.obolibrary.org/obo/SO_0000704">Gene</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefEnsemblProtein">
+      <h3>see also Ensembl protein<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefEnsemblProtein</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an Ensembl protein.
+
+URI RDF instance template to assign this property: http://rdf.ebi.ac.uk/resource/ensembl.protein/{ENSEMBL_PROTEIN_ID}. Example: :ANY_URI lscr:xrefEnsemblProtein http://rdf.ebi.ac.uk/resource/ensembl.protein/ENSP00000296370</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefEnsembl" title="http://purl.org/lscr#xrefEnsembl">see also Ensembl cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://rdf.ebi.ac.uk/terms/ensembl/protein" title="http://rdf.ebi.ac.uk/terms/ensembl/protein">protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefEnsemblTranscript">
+      <h3>see also Ensembl transcript<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefEnsemblTranscript</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an Ensembl transcript.
+
+URI RDF instance template to assign this property: http://rdf.ebi.ac.uk/resource/ensembl.transcript/{ENSEMBL_TRANSCRIPT_ID}. Example: :ANY_URI lscr:xrefEnsemblTranscript http://rdf.ebi.ac.uk/resource/ensembl.transcript/ENST00000380152</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefEnsembl" title="http://purl.org/lscr#xrefEnsembl">see also Ensembl cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.obolibrary.org/obo/SO_0000673" title="http://purl.obolibrary.org/obo/SO_0000673">Transcript</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefMBGD">
+      <h3>see also MBGD cross-reference<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefMBGD</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to any MBGD database resource.  MBGD: Microbial Genome Database for Comparative Analysis - mbgd.genome.ad.jp .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">see also</span>
+            </dd>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefMBGDGene" title="http://purl.org/lscr#xrefMBGDGene">see also MBGD gene</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://purl.org/lscr#xrefMBGDGroup" title="http://purl.org/lscr#xrefMBGDGroup">see also MBGD gene group</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefMBGDGene">
+      <h3>see also MBGD gene<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefMBGDGene</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an MBGD gene.  MBGD: Microbial Genome Database for Comparative Analysis - mbgd.genome.ad.jp .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefMBGD" title="http://purl.org/lscr#xrefMBGD">see also MBGD cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefMBGDGroup">
+      <h3>see also MBGD gene group<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefMBGDGroup</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an MBGD group of genes.  MBGD: Microbial Genome Database for Comparative Analysis - mbgd.genome.ad.jp .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefMBGD" title="http://purl.org/lscr#xrefMBGD">see also MBGD cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefNCBI">
+      <h3>see also NCBI cross-reference<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefNCBI</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to any NCBI database resource. NCBI: National Center for Biotechnology Information -
+https://www.ncbi.nlm.nih.gov/ .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">see also</span>
+            </dd>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefNCBIRefSeq" title="http://purl.org/lscr#xrefNCBIRefSeq">see also NCBI RefSeq</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://purl.org/lscr#xrefNCBIGene" title="http://purl.org/lscr#xrefNCBIGene">see also NCBI gene</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://purl.org/lscr#xrefNCBIProtein" title="http://purl.org/lscr#xrefNCBIProtein">see also NCBI protein</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefNCBIGene">
+      <h3>see also NCBI gene<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefNCBIGene</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an NCBI gene resource. NCBI: National Center for Biotechnology Information -
+https://www.ncbi.nlm.nih.gov/ .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefNCBI" title="http://purl.org/lscr#xrefNCBI">see also NCBI cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefNCBIProtein">
+      <h3>see also NCBI protein<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefNCBIProtein</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an NCBI protein resource. NCBI: National Center for Biotechnology Information -
+https://www.ncbi.nlm.nih.gov/ .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefNCBI" title="http://purl.org/lscr#xrefNCBI">see also NCBI cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefNCBIRefSeq">
+      <h3>see also NCBI RefSeq<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefNCBIRefSeq</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an NCBI Reference Sequence Database (RefSeq) resource. NCBI: National Center for Biotechnology Information -
+https://www.ncbi.nlm.nih.gov/ .</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefNCBI" title="http://purl.org/lscr#xrefNCBI">see also NCBI cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefOMA">
+      <h3>see also OMA cross-reference<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefOMA</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an OMA database resource.</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">see also</span>
+            </dd>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefOMAGroup" title="http://purl.org/lscr#xrefOMAGroup">see also OMA group</a>
+               <sup class="type-ap" title="annotation property">ap</sup>, <a href="#http://purl.org/lscr#xrefOMAProtein" title="http://purl.org/lscr#xrefOMAProtein">see also OMA protein</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefOMAGroup">
+      <h3>see also OMA group<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefOMAGroup</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an OMA group of sequences (e.g.: proteins).</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefOMA" title="http://purl.org/lscr#xrefOMA">see also OMA cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#HomologsCluster" title="http://purl.org/net/orth#HomologsCluster">Cluster of homologous sequences</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefOMAProtein">
+      <h3>see also OMA protein<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefOMAProtein</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to an OMA proteins.
+
+URI RDF instance template to assign this property: http://omabrowser.org/ontology/oma#PROTEIN_{OMA_ID}. Example: :ANY_URI lscr:xrefOMAProtein http://omabrowser.org/ontology/oma#PROTEIN_HUMAN22168</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/lscr#xrefOMA" title="http://purl.org/lscr#xrefOMA">see also OMA cross-reference</a>
+               <sup class="type-ap" title="annotation property">ap</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/net/orth#Protein" title="http://purl.org/net/orth#Protein">Protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/lscr#xrefUniprot">
+      <h3>see also UniProt cross-reference<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/lscr#xrefUniprot</p>
+      <div class="comment">
+         <span class="markdown">This cross-reference relates a given resource to  a UniProt protein.
+
+URI RDF instance template to assign this property: http://purl.uniprot.org/uniprot/{UNIPROT_ID}. Example: :ANY_URI lscr:xrefUniprot http://purl.uniprot.org/uniprot/P68871</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2000/01/rdf-schema#seeAlso">see also</span>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.uniprot.org/core/Protein" title="http://purl.uniprot.org/core/Protein">protein</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://www.ebi.ac.uk/efo/source_definition">
+      <h3>source definition<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.ebi.ac.uk/efo/source_definition</p>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/IAO_0000117">
+      <h3>term editor<sup class="type-ap" title="annotation property">ap</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#annotationproperties">Annotation Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/IAO_0000117</p>
+   </div>
+</div><div id="namedindividuals">
+   <h3 id="namedindividuals" class="list">Named Individuals</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/go.owl" title="http://purl.obolibrary.org/obo/go.owl">Gene Ontology</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/taxonomy/9606" title="http://purl.uniprot.org/taxonomy/9606">Homo sapiens</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/database/InterPro" title="http://purl.uniprot.org/database/InterPro">Integrated resource of protein families, domains and functional sites</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/database/KEGG" title="http://purl.uniprot.org/database/KEGG">KEGG: Kyoto Encyclopedia of Genes and Genomes</a>
+      </li>
+      <li>
+         <a href="#http://purl.obolibrary.org/obo/OBI_0000175" title="http://purl.obolibrary.org/obo/OBI_0000175">
+            <span>p-value</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/database/Pfam" title="http://purl.uniprot.org/database/Pfam">Pfam protein domain database</a>
+      </li>
+      <li>
+         <a href="#https://pubmed.ncbi.nlm.nih.gov" title="https://pubmed.ncbi.nlm.nih.gov">PubMed publications</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/database/Reactome" title="http://purl.uniprot.org/database/Reactome">Reactome - a knowledgebase of biological pathways and processes</a>
+      </li>
+      <li>
+         <a href="#http://purl.uniprot.org/database/SMART" title="http://purl.uniprot.org/database/SMART">Simple Modular Architecture Research Tool; a protein domain database</a>
+      </li>
+      <li>
+         <a href="#https://string-db.org" title="https://string-db.org">STRING database</a>
+      </li>
+      <li>
+         <a href="#https://www.uniprot.org/docs/keywlist.txt" title="https://www.uniprot.org/docs/keywlist.txt">UniProt Keywords</a>
+      </li>
+   </ul>
+   <div class="entity" id="http://purl.obolibrary.org/obo/go.owl">
+      <h3>Gene Ontology<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/go.owl</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme"
+               title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/taxonomy/9606">
+      <h3>Homo sapiens<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/taxonomy/9606</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/Taxon" title="http://purl.uniprot.org/core/Taxon">Taxon</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/database/InterPro">
+      <h3>Integrated resource of protein families, domains and functional sites<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/database/InterPro</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/database/KEGG">
+      <h3>KEGG: Kyoto Encyclopedia of Genes and Genomes<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/database/KEGG</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.obolibrary.org/obo/OBI_0000175">
+      <h3>p-value<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.obolibrary.org/obo/OBI_0000175</p>
+      <dl class="description">
+         <dt>has facts</dt>
+         <dd>
+            <a href="#http://www.w3.org/2004/02/skos/core#inScheme" title="http://www.w3.org/2004/02/skos/core#inScheme">is in scheme</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="dotted" title="http://purl.obolibrary.org/obo/obi.owl">obi.owl</span>
+         </dd>
+         <dt>is also defined as</dt>
+         <dd>class</dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/database/Pfam">
+      <h3>Pfam protein domain database<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/database/Pfam</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+
+      </dl>
+   </div>
+   <div class="entity" id="https://pubmed.ncbi.nlm.nih.gov">
+      <h3>PubMed publications<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://pubmed.ncbi.nlm.nih.gov</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/database/Reactome">
+      <h3>Reactome - a knowledgebase of biological pathways and processes<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/database/Reactome</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.uniprot.org/database/SMART">
+      <h3>Simple Modular Architecture Research Tool; a protein domain database<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.uniprot.org/database/SMART</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://purl.uniprot.org/core/Database" title="http://purl.uniprot.org/core/Database">Database (description of)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+
+      </dl>
+   </div>
+   <div class="entity" id="https://string-db.org">
+      <h3>STRING database<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://string-db.org</p>
+      <div class="comment">
+         <span class="markdown">STRING is a database of known and predicted protein-protein interactions. The interactions include direct (physical) and indirect (functional) associations; they stem from computational prediction, from knowledge transfer between organisms, and from interactions aggregated from other (primary) databases.</span>
+      </div>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://semanticscience.org/resource/SIO_000750" title="http://semanticscience.org/resource/SIO_000750">database</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://www.uniprot.org/docs/keywlist.txt">
+      <h3>UniProt Keywords<sup class="type-ni" title="named individual">ni</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://www.uniprot.org/docs/keywlist.txt</p>
+      <dl class="description">
+         <dt>belongs to</dt>
+         <dd>
+            <a href="#http://www.w3.org/2004/02/skos/core#ConceptScheme"
+               title="http://www.w3.org/2004/02/skos/core#ConceptScheme">Concept Scheme</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals
+</div>
+</div>
+</div>
+    
+
+<!--REFERENCES SECTION-->
+  <div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Add your references here. It is recommended to have them as a list.</span>
+
+</div>
+<div id="acknowledgements">
+<h2 id="ack" class="list">Acknowledgements <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

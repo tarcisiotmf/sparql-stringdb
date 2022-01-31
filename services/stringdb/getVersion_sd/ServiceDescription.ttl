@@ -1,0 +1,54 @@
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#>.
+@prefix sd:      <http://www.w3.org/ns/sparql-service-description#>.
+@prefix frmt:    <http://www.w3.org/ns/formats/>.
+@prefix dct:     <http://purl.org/dc/terms/>.
+@prefix shacl:   <http://www.w3.org/ns/shacl#>.
+@prefix void:    <http://rdfs.org/ns/void#>.
+@prefix hydra:   <http://www.w3.org/ns/hydra/core#>.
+@prefix schema:  <http://schema.org/>.
+@prefix sms:     <http://ns.inria.fr/sparql-micro-service#>.
+
+@base            <http://localhost/service/stringdb/getVersion_sd/>.
+
+# This file is loaded as graph <ServiceDescription>
+<>
+    a sd:Service;
+    sd:endpoint <>;
+    sd:supportedLanguage sd:SPARQL11Query;
+    sd:feature sd:BasicFederatedQuery, sd:EmptyGraphs;
+    sd:resultFormat frmt:SPARQL_Results_XML, frmt:SPARQL_Results_JSON, frmt:SPARQL_Results_CSV, frmt:SPARQL_Results_TSV,
+                    frmt:RDF_XML, frmt:Turtle, frmt:JSON-LD, frmt:Trig;
+    schema:name "Get STRING database version.";
+    schema:description "SPARQL micro-service wrapping the STRING database Web API to get the STRING database version being considered.";
+    
+    sd:defaultDataset [
+        a sd:Dataset, void:Dataset;
+        sd:namedGraph   [ a sd:Graph; sd:name <ServiceDescription> ];
+        
+        void:vocabulary <http://schema.org/>, <http://rs.tdwg.org/dwc/terms/>, <http://www.w3.org/ns/shacl#>, <http://www.w3.org/ns/hydra/core#>;
+        void:sparqlEndpoint <>;
+        
+        # Topics description
+        foaf:topic <https://string-db.org/cgi/about?footer_active_subpage=content>, <https://www.wikidata.org/entity/Q896177>; # Protein-Protein interactions (physical)
+        schema:keywords "protein-protein interaction"@en, "STRING database"@en;
+    ];
+
+    dct:source [
+        a schema:WebAPI; schema:name "STRING database Web API";
+        schema:url <https://string-db.org/>;
+        schema:potentialAction <APIService>;
+    ];
+    
+    # Maxium time (in seconds) to cache responses from the Web API. Default: 2592000 = 30 days
+    sms:cacheExpiresAfter "P2592000S"^^xsd:duration;
+
+    # Add provenance information to the graph generated at each invocation?
+    sms:addProvenance "false"^^xsd:boolean    .
+
+# Web API service being wrapped by this µ-service + parameters binding
+<APIService>
+    a schema:SearchAction, hydra:IriTemplate;
+    hydra:template "https://string-db.org/api/json/version";
+    sms:passMultipleValuesAsCsv "false"^^xsd:boolean ;
+    hydra:mapping [].
+  

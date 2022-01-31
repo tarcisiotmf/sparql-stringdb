@@ -1,0 +1,2601 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "en", "undefined" ],
+    "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://purl.uniprot.org/core", "http://purl.obolibrary.org/obo", "http://purl.org/net/orth", "http://www.w3.org/2001/XMLSchema", "http://purl.org/dc/elements/1.1", "http://semanticscience.org/resource", "http://rdf.ebi.ac.uk/terms/ensembl", "http://www.w3.org/2000/01/rdf-schema", "http://purl.org/stringdb", "http://www.ifomis.org/bfo/1.1/snap", "http://purl.org/dc/terms", "http://www.w3.org/2004/02/skos/core" ],
+    "iri" : "http://purl.org/stringdb",
+    "version" : "STRING database Web API ontology",
+    "author" : [ "http://purl.org/query/tarcisiomf" ],
+    "other" : {
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "http://purl.org/query/tarcisiomf",
+        "type" : "iri"
+      } ],
+      "versionInfo" : [ {
+        "identifier" : "versionInfo",
+        "language" : "en",
+        "value" : "STRING database Web API ontology",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "3",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "12",
+    "type" : "owl:Class"
+  }, {
+    "id" : "16",
+    "type" : "owl:Class"
+  }, {
+    "id" : "17",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "18",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "21",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "22",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "24",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "25",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "26",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "29",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "30",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "31",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "37",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "38",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "39",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "40",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "20",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "41",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "42",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "43",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "14",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "48",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "50",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "55",
+    "type" : "owl:Class"
+  }, {
+    "id" : "15",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "62",
+    "type" : "owl:Class"
+  }, {
+    "id" : "36",
+    "type" : "owl:Class"
+  }, {
+    "id" : "8",
+    "type" : "owl:Class"
+  }, {
+    "id" : "47",
+    "type" : "owl:Class"
+  }, {
+    "id" : "71",
+    "type" : "owl:Class"
+  }, {
+    "id" : "74",
+    "type" : "owl:Class"
+  }, {
+    "id" : "59",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "6",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "53",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "78",
+    "type" : "owl:Class"
+  }, {
+    "id" : "79",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "66",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "80",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "2",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "11",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "81",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "85",
+    "type" : "owl:Class"
+  }, {
+    "id" : "54",
+    "type" : "owl:Class"
+  }, {
+    "id" : "44",
+    "type" : "owl:Class"
+  }, {
+    "id" : "51",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "5",
+    "type" : "owl:Class"
+  }, {
+    "id" : "9",
+    "type" : "owl:Class"
+  }, {
+    "id" : "45",
+    "type" : "owl:Class"
+  }, {
+    "id" : "98",
+    "type" : "owl:Class"
+  }, {
+    "id" : "95",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "96",
+    "type" : "owl:unionOf"
+  }, {
+    "id" : "77",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "87",
+    "type" : "owl:Class"
+  }, {
+    "id" : "56",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "46",
+    "type" : "owl:Class"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "3",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://purl.uniprot.org/core/Taxon",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "instances" : 0,
+    "annotations" : {
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/books/NBK54428/",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Taxon",
+      "undefined" : "Taxon"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.uniprot.org/taxonomy/9606",
+      "baseIri" : "http://purl.uniprot.org/taxonomy",
+      "labels" : {
+        "IRI-based" : "9606",
+        "undefined" : "Homo sapiens"
+      }
+    } ],
+    "comment" : {
+      "undefined" : "An element of a taxonomy for classifying life forms."
+    },
+    "attributes" : [ "external" ],
+    "id" : "12"
+  }, {
+    "iri" : "http://purl.org/net/orth#OrthologyDataset",
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "OrthologyDataset"
+    },
+    "attributes" : [ "external" ],
+    "id" : "16"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "17",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "18",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "21",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "22",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "24",
+    "label" : {
+      "IRI-based" : "nonNegativeInteger"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "25",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "26",
+    "label" : {
+      "IRI-based" : "nonNegativeInteger"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "29",
+    "label" : {
+      "IRI-based" : "nonNegativeInteger"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "30",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "31",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://purl.org/stringdb#Score",
+    "baseIri" : "http://purl.org/stringdb",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Score",
+      "undefined" : "score"
+    },
+    "comment" : {
+      "undefined" : "Class to define a set of any type of score values."
+    },
+    "id" : "1"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "37",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "38",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "39",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "baseIri" : "http://www.w3.org/2000/01/rdf-schema",
+    "id" : "40",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "baseIri" : "http://www.w3.org/2000/01/rdf-schema",
+    "id" : "20",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "41",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "42",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "instances" : 0,
+    "union" : [ "44", "45" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "43"
+  }, {
+    "instances" : 0,
+    "union" : [ "46", "47" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "14"
+  }, {
+    "instances" : 0,
+    "union" : [ "44", "45" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "48"
+  }, {
+    "iri" : "http://www.ifomis.org/bfo/1.1/snap#MaterialEntity",
+    "equivalent" : [ "51" ],
+    "baseIri" : "http://www.ifomis.org/bfo/1.1/snap",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "MaterialEntity"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "50"
+  }, {
+    "iri" : "http://purl.org/net/orth#Gene",
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://github.com/qfo/OrthologyOntology",
+        "type" : "label"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://github.com/qfo/OrthologyOntology",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Gene"
+    },
+    "attributes" : [ "external" ],
+    "id" : "55"
+  }, {
+    "iri" : "http://purl.org/net/orth#Protein",
+    "equivalent" : [ "56" ],
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://github.com/qfo/OrthologyOntology",
+        "type" : "label"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://github.com/qfo/OrthologyOntology",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Protein",
+      "en" : "Protein"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "15",
+    "superClasses" : [ "5" ]
+  }, {
+    "iri" : "http://purl.org/stringdb#NetworkImage",
+    "baseIri" : "http://purl.org/stringdb",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NetworkImage",
+      "undefined" : "network image"
+    },
+    "comment" : {
+      "undefined" : "A network image of interactions among  proteins, that illustrates a neighborhood surrounding one or more proteins."
+    },
+    "id" : "58"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/OBI_0000175",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "annotations" : {
+      "IAO_0000111" : [ {
+        "identifier" : "IAO_0000111",
+        "language" : "en",
+        "value" : "p-value",
+        "type" : "label"
+      } ],
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "http://creativecommons.org/licenses/by/4.0/",
+        "type" : "iri"
+      } ],
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/obi/2020-04-23/obi.owl",
+        "type" : "iri"
+      } ],
+      "IAO_0000112" : [ {
+        "identifier" : "IAO_0000112",
+        "language" : "undefined",
+        "value" : "PMID:19696660\nin contrast to the in-vivo data AT-III increased significantly from\n113.5% at baseline to 117% after 4 days (n = 10, P-value= 0.02; Table 2).",
+        "type" : "label"
+      } ],
+      "IAO_0000115" : [ {
+        "identifier" : "IAO_0000115",
+        "language" : "en",
+        "value" : "A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone.",
+        "type" : "label"
+      } ],
+      "IAO_0000119" : [ {
+        "identifier" : "IAO_0000119",
+        "language" : "undefined",
+        "value" : "WEB: http://en.wikipedia.org/wiki/P-value",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "OBI_0000175",
+      "en" : "p-value"
+    },
+    "attributes" : [ "external" ],
+    "id" : "62"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/Rank",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Rank"
+    },
+    "attributes" : [ "external" ],
+    "id" : "36"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/Resource",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Resource",
+      "undefined" : "Resource"
+    },
+    "comment" : {
+      "undefined" : "A life science resource."
+    },
+    "attributes" : [ "external" ],
+    "id" : "8"
+  }, {
+    "iri" : "http://purl.org/stringdb#PPIEnrichment",
+    "baseIri" : "http://purl.org/stringdb",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PPIEnrichment",
+      "undefined" : "protein-protein interaction enrichment"
+    },
+    "comment" : {
+      "undefined" : "Even in the absence of annotated proteins (e.g. in novel genomes) databases such as STRING can tell if the subset of proteins is functionally related, that is, if it is enriched in interactions in comparison to the background proteome-wide interaction distribution."
+    },
+    "id" : "47"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/SO_0000704",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.ontobee.org/ontology/SO?iri=http://purl.obolibrary.org/obo/SO_0000704",
+        "type" : "label"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.ontobee.org/ontology/SO?iri=http://purl.obolibrary.org/obo/SO_0000704",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "SO_0000704",
+      "undefined" : "Gene"
+    },
+    "attributes" : [ "external" ],
+    "id" : "71"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/SO_0000673",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://www.ebi.ac.uk/rdf/documentation/ensembl/",
+        "type" : "label"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://www.ebi.ac.uk/rdf/documentation/ensembl/",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "SO_0000673",
+      "undefined" : "Transcript"
+    },
+    "attributes" : [ "external" ],
+    "id" : "74"
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "59",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://purl.org/net/orth#Organism",
+    "equivalent" : [ "77" ],
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Living being",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Organism",
+      "en" : "Organism"
+    },
+    "comment" : {
+      "en" : "A living being, such as an animal, a plant, a bacterium, or a fungus., Any individual living (or previously living) being. Example: animal, human being. An organim can be associated to a taxon such as \"Homo Sapiens\", NCBI taxonomy identifier: 9606."
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "6"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "53",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://rdf.ebi.ac.uk/terms/ensembl/protein",
+    "baseIri" : "http://rdf.ebi.ac.uk/terms/ensembl",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://www.ebi.ac.uk/rdf/documentation/ensembl/",
+        "type" : "label"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://www.ebi.ac.uk/rdf/documentation/ensembl/",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "protein"
+    },
+    "attributes" : [ "external" ],
+    "id" : "78"
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "79",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "66",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "80",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#double",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "2",
+    "label" : {
+      "IRI-based" : "double"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "11",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#string",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "81",
+    "label" : {
+      "IRI-based" : "string"
+    }
+  }, {
+    "iri" : "http://purl.uniprot.org/core/Concept",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Concept",
+      "undefined" : "Concept"
+    },
+    "comment" : {
+      "undefined" : "A concept used to classify resources."
+    },
+    "attributes" : [ "external" ],
+    "id" : "85"
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2004/02/skos/core",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "A set of concepts, optionally including statements about semantic relationships between those concepts.",
+        "type" : "label"
+      } ],
+      "scopeNote" : [ {
+        "identifier" : "scopeNote",
+        "language" : "en",
+        "value" : "A concept scheme may be defined to include concepts from different sources.",
+        "type" : "label"
+      } ],
+      "example" : [ {
+        "identifier" : "example",
+        "language" : "en",
+        "value" : "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "ConceptScheme",
+      "en" : "Concept Scheme"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.uniprot.org/database/Reactome",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "Reactome",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://reactome.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Reactome",
+        "undefined" : "Reactome - a knowledgebase of biological pathways and processes"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/SMART",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "SMART",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "http://smart.embl.de/",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "SMART",
+        "undefined" : "Simple Modular Architecture Research Tool; a protein domain database"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/InterPro",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "InterPro",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.ebi.ac.uk/interpro",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "InterPro",
+        "undefined" : "Integrated resource of protein families, domains and functional sites"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/KEGG",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "KEGG",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.genome.jp/kegg/",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "KEGG",
+        "undefined" : "KEGG: Kyoto Encyclopedia of Genes and Genomes"
+      }
+    }, {
+      "iri" : "https://pubmed.ncbi.nlm.nih.gov",
+      "baseIri" : "https:/",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "PubMed",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://pubmed.ncbi.nlm.nih.gov",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "pubmed.ncbi.nlm.nih.gov",
+        "undefined" : "PubMed publications"
+      }
+    }, {
+      "iri" : "http://purl.obolibrary.org/obo/go.owl",
+      "baseIri" : "http://purl.obolibrary.org/obo",
+      "annotations" : {
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "http://geneontology.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "go.owl",
+        "undefined" : "Gene Ontology"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/Pfam",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "Pfam",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://pfam.xfam.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Pfam",
+        "undefined" : "Pfam protein domain database"
+      }
+    }, {
+      "iri" : "https://www.uniprot.org/docs/keywlist.txt",
+      "baseIri" : "https://www.uniprot.org/docs",
+      "annotations" : {
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.uniprot.org/help/keywords",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "keywlist.txt",
+        "undefined" : "UniProt Keywords"
+      }
+    } ],
+    "attributes" : [ "external" ],
+    "id" : "54"
+  }, {
+    "iri" : "http://purl.org/net/orth#HomologsCluster",
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "homologs cluster",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "Cluster of homologs",
+        "type" : "label"
+      }, {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "homologous group",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "HomologsCluster",
+      "en" : "Cluster of homologous sequences"
+    },
+    "comment" : {
+      "en" : "Set of homologous sequences"
+    },
+    "attributes" : [ "external" ],
+    "id" : "44"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/BFO_0000040",
+    "equivalent" : [ "50" ],
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "annotations" : {
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "http://creativecommons.org/licenses/by/4.0/",
+        "type" : "iri"
+      } ],
+      "IAO_0000112" : [ {
+        "identifier" : "IAO_0000112",
+        "language" : "undefined",
+        "value" : "A heart, a human, a fly, a microarray.",
+        "type" : "label"
+      } ],
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/bfo.owl",
+        "type" : "iri"
+      } ],
+      "IAO_0000115" : [ {
+        "identifier" : "IAO_0000115",
+        "language" : "undefined",
+        "value" : "A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray.",
+        "type" : "label"
+      } ],
+      "hasExactSynonym" : [ {
+        "identifier" : "hasExactSynonym",
+        "language" : "undefined",
+        "value" : "material type",
+        "type" : "label"
+      } ],
+      "source_definition" : [ {
+        "identifier" : "source_definition",
+        "language" : "undefined",
+        "value" : "An independent continuant [snap:IndependentContinuant] that is spatially extended whose identity is independent of that of other entities and can be maintained through time. Note: Material entity [snap:MaterialEntity] subsumes object [snap:Object], fiat object part [snap:FiatObjectPart], and object aggregate [snap:ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology.",
+        "type" : "label"
+      } ],
+      "IAO_0000117" : [ {
+        "identifier" : "IAO_0000117",
+        "language" : "undefined",
+        "value" : "James Malone",
+        "type" : "label"
+      } ],
+      "relatedMatch" : [ {
+        "identifier" : "relatedMatch",
+        "language" : "undefined",
+        "value" : "http://semanticscience.org/resource/SIO_000004",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "BFO_0000040",
+      "undefined" : "material entity"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "51"
+  }, {
+    "iri" : "http://purl.org/net/orth#SequenceUnit",
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SequenceUnit",
+      "en" : "Sequence unit"
+    },
+    "subClasses" : [ "15" ],
+    "comment" : {
+      "en" : "protein or DNA sequence as a unit of comparison"
+    },
+    "attributes" : [ "external" ],
+    "id" : "5"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/Database",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "iri"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.uniprot.org/manual/cross_references_section",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Database",
+      "undefined" : "Database (description of)"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.uniprot.org/database/Reactome",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "Reactome",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://reactome.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Reactome",
+        "undefined" : "Reactome - a knowledgebase of biological pathways and processes"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/SMART",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "SMART",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "http://smart.embl.de/",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "SMART",
+        "undefined" : "Simple Modular Architecture Research Tool; a protein domain database"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/KEGG",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "KEGG",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.genome.jp/kegg/",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "KEGG",
+        "undefined" : "KEGG: Kyoto Encyclopedia of Genes and Genomes"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/InterPro",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "InterPro",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.ebi.ac.uk/interpro",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "InterPro",
+        "undefined" : "Integrated resource of protein families, domains and functional sites"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/Pfam",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "Pfam",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://pfam.xfam.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Pfam",
+        "undefined" : "Pfam protein domain database"
+      }
+    } ],
+    "comment" : {
+      "undefined" : "Metadata for a life science database."
+    },
+    "attributes" : [ "external" ],
+    "id" : "9"
+  }, {
+    "iri" : "http://purl.org/net/orth#HomologyRelation",
+    "baseIri" : "http://purl.org/net/orth",
+    "instances" : 0,
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "homologous relation",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "HomologyRelation",
+      "en" : "homology relation"
+    },
+    "comment" : {
+      "en" : "This class represents homology relations among sequence units (e.g genes, proteins or gene regions)."
+    },
+    "attributes" : [ "external" ],
+    "id" : "45"
+  }, {
+    "iri" : "http://semanticscience.org/resource/SIO_000750",
+    "baseIri" : "http://semanticscience.org/resource",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SIO_000750",
+      "en" : "database"
+    },
+    "individuals" : [ {
+      "iri" : "http://purl.uniprot.org/database/Reactome",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "Reactome",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://reactome.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Reactome",
+        "undefined" : "Reactome - a knowledgebase of biological pathways and processes"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/SMART",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "SMART",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "http://smart.embl.de/",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "SMART",
+        "undefined" : "Simple Modular Architecture Research Tool; a protein domain database"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/KEGG",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "KEGG",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.genome.jp/kegg/",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "KEGG",
+        "undefined" : "KEGG: Kyoto Encyclopedia of Genes and Genomes"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/InterPro",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "InterPro",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://www.ebi.ac.uk/interpro",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "InterPro",
+        "undefined" : "Integrated resource of protein families, domains and functional sites"
+      }
+    }, {
+      "iri" : "https://string-db.org",
+      "baseIri" : "https:/",
+      "comment" : {
+        "undefined" : "STRING is a database of known and predicted protein-protein interactions. The interactions include direct (physical) and indirect (functional) associations; they stem from computational prediction, from knowledge transfer between organisms, and from interactions aggregated from other (primary) databases."
+      },
+      "labels" : {
+        "IRI-based" : "string-db.org",
+        "undefined" : "STRING database"
+      }
+    }, {
+      "iri" : "https://pubmed.ncbi.nlm.nih.gov",
+      "baseIri" : "https:/",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "PubMed",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://pubmed.ncbi.nlm.nih.gov",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "pubmed.ncbi.nlm.nih.gov",
+        "undefined" : "PubMed publications"
+      }
+    }, {
+      "iri" : "http://purl.uniprot.org/database/Pfam",
+      "baseIri" : "http://purl.uniprot.org/database",
+      "annotations" : {
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "Pfam",
+          "type" : "label"
+        } ],
+        "seeAlso" : [ {
+          "identifier" : "seeAlso",
+          "language" : "undefined",
+          "value" : "https://pfam.xfam.org",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "Pfam",
+        "undefined" : "Pfam protein domain database"
+      }
+    } ],
+    "comment" : {
+      "en" : "A database is a data store such as relational, hierarchical and graph databases."
+    },
+    "attributes" : [ "external" ],
+    "id" : "98"
+  }, {
+    "instances" : 0,
+    "union" : [ "44", "45" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "95"
+  }, {
+    "instances" : 0,
+    "union" : [ "44", "5" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "96"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/NCIT_C14250",
+    "equivalent" : [ "6" ],
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NCIT_C14250",
+      "undefined" : "Organism"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "77"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/Protein",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "label"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "Protein"
+    },
+    "attributes" : [ "external" ],
+    "id" : "87"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/SO_0000104",
+    "equivalent" : [ "15" ],
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "SO_0000104",
+      "undefined" : "polypeptide"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "56"
+  }, {
+    "iri" : "http://purl.org/stringdb#ProteinProteinInteraction",
+    "baseIri" : "http://purl.org/stringdb",
+    "instances" : 0,
+    "annotations" : {
+      "closeMatch" : [ {
+        "identifier" : "closeMatch",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/NCIT_C18469",
+        "type" : "iri"
+      } ],
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "PPI",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "ProteinProteinInteraction",
+      "undefined" : "protein-protein interaction"
+    },
+    "comment" : {
+      "undefined" : "Temporary, non-covalent binding between protein molecules. Protein-protein interactions occur as a result of intermolecular physical forces and spatial complementation between domains or motifs. This interaction can be either homotypic or heterotypic and effect protein structure, conformation, and function.[source: NCIT]"
+    },
+    "id" : "46"
+  } ],
+  "property" : [ {
+    "id" : "0",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "4",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "7",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "10",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "13",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "19",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "23",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "27",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "32",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "33",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "35",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "49",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "52",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "57",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "60",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "63",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "65",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "67",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "68",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "70",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "72",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "73",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "75",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "76",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "28",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "82",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "83",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "84",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "86",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "88",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "89",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "90",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "91",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "92",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "93",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "94",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "64",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "97",
+    "type" : "owl:allValuesFrom"
+  }, {
+    "id" : "99",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "100",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "101",
+    "type" : "owl:allValuesFrom"
+  }, {
+    "id" : "102",
+    "type" : "owl:allValuesFrom"
+  }, {
+    "id" : "34",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "103",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "104",
+    "type" : "owl:allValuesFrom"
+  }, {
+    "id" : "105",
+    "type" : "owl:allValuesFrom"
+  }, {
+    "id" : "61",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "106",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "69",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "107",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "108",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "109",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "110",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "111",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "112",
+    "type" : "owl:datatypeProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "iri" : "http://purl.org/stringdb#textMiningScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "2",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "tscore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "textMiningScore",
+      "undefined" : "text mining score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The textmining score is derived from the co-occurrence of gene/protein names in abstracts."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "0"
+  }, {
+    "iri" : "http://purl.org/net/orth#organism",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "6",
+    "label" : {
+      "IRI-based" : "organism"
+    },
+    "domain" : "5",
+    "attributes" : [ "object", "external" ],
+    "id" : "4"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/database",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "9",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "database",
+      "undefined" : "database"
+    },
+    "domain" : "8",
+    "attributes" : [ "functional", "object", "external" ],
+    "id" : "7"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/CDAO_0000194",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "range" : "11",
+    "label" : {
+      "IRI-based" : "CDAO_0000194",
+      "undefined" : "part_of"
+    },
+    "domain" : "11",
+    "attributes" : [ "object", "external" ],
+    "id" : "10"
+  }, {
+    "iri" : "http://purl.org/stringdb#hasProtein",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "15",
+    "label" : {
+      "IRI-based" : "hasProtein",
+      "undefined" : "has protein"
+    },
+    "domain" : "14",
+    "comment" : {
+      "undefined" : "It states a protein that is part of or contained in the subject."
+    },
+    "attributes" : [ "object" ],
+    "id" : "13"
+  }, {
+    "iri" : "http://purl.org/dc/elements/1.1/description",
+    "baseIri" : "http://purl.org/dc/elements/1.1",
+    "range" : "20",
+    "description" : {
+      "en" : "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+    },
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.org/dc/elements/1.1/",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "description",
+      "en" : "Description"
+    },
+    "domain" : "11",
+    "comment" : {
+      "en" : "An account of the resource."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "19"
+  }, {
+    "iri" : "http://purl.org/stringdb#partialScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "18",
+    "label" : {
+      "IRI-based" : "partialScore",
+      "undefined" : "partial score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The partial scores used to compute the combined scores."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "23"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/RO_0002350",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "range" : "11",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/ro.owl",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "RO_0002350",
+      "en" : "member of"
+    },
+    "domain" : "11",
+    "subproperty" : [ "28" ],
+    "comment" : {
+      "en" : "Is member of is a mereological relation between a item and a collection."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "27"
+  }, {
+    "iri" : "http://purl.org/stringdb#neighborhoodScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "25",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "nscore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "neighborhoodScore",
+      "undefined" : "gene neighborhood score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The neighborhood score is computed from the inter-gene nucleotide count."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "32"
+  }, {
+    "iri" : "http://purl.org/net/orth#hasHomolog",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "5",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "en",
+        "value" : "is homologous to",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "hasHomolog",
+      "en" : "has homolog"
+    },
+    "superproperty" : [ "34" ],
+    "domain" : "5",
+    "comment" : {
+      "en" : "Homologous pairwise relation between sequence units (e.g.: genes, proteins or gene regions). For example, A Gene(A) hasHomolog Gene(B). This property can be materialized or inferred by applying a logical rule."
+    },
+    "attributes" : [ "symmetric", "object", "external" ],
+    "id" : "33"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/rank",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "36",
+    "label" : {
+      "IRI-based" : "rank"
+    },
+    "domain" : "12",
+    "comment" : {
+      "undefined" : "The rank of a taxon."
+    },
+    "attributes" : [ "functional", "object", "external" ],
+    "id" : "35"
+  }, {
+    "iri" : "http://purl.org/stringdb#averageNodeDegree",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "42",
+    "label" : {
+      "IRI-based" : "averageNodeDegree",
+      "undefined" : "average node degree"
+    },
+    "domain" : "47",
+    "comment" : {
+      "undefined" : "The mean degree of the node in the network."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "49"
+  }, {
+    "iri" : "http://www.w3.org/2004/02/skos/core#inScheme",
+    "baseIri" : "http://www.w3.org/2004/02/skos/core",
+    "range" : "54",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://www.w3.org/2004/02/skos/core",
+        "type" : "iri"
+      } ],
+      "definition" : [ {
+        "identifier" : "definition",
+        "language" : "en",
+        "value" : "Relates a resource (for example a concept) to a concept scheme in which it is included.",
+        "type" : "label"
+      } ],
+      "scopeNote" : [ {
+        "identifier" : "scopeNote",
+        "language" : "en",
+        "value" : "A concept may be a member of more than one concept scheme.",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "inScheme",
+      "en" : "is in scheme"
+    },
+    "domain" : "53",
+    "attributes" : [ "object", "external" ],
+    "id" : "52"
+  }, {
+    "iri" : "http://purl.org/stringdb#networkFlavor",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "59",
+    "label" : {
+      "IRI-based" : "networkFlavor",
+      "undefined" : "network flavor"
+    },
+    "domain" : "58",
+    "comment" : {
+      "undefined" : "The style of edges in the network: evidence, confidence, actions"
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "57"
+  }, {
+    "iri" : "http://purl.org/net/orth#hasHomologyData",
+    "inverse" : "61",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "43",
+    "label" : {
+      "IRI-based" : "hasHomologyData",
+      "en" : "has homology data"
+    },
+    "superproperty" : [ "34" ],
+    "domain" : "16",
+    "comment" : {
+      "en" : "Inverse property of inDataset.  It permits to retrieve  the clusters or homology relations included in a particular dataset."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "60"
+  }, {
+    "iri" : "http://semanticscience.org/resource/SIO_000028",
+    "baseIri" : "http://semanticscience.org/resource",
+    "range" : "11",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://semanticscience.org/ontology/sio.owl",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "SIO_000028",
+      "en" : "has part"
+    },
+    "domain" : "11",
+    "subproperty" : [ "64" ],
+    "comment" : {
+      "en" : "has part is a transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part."
+    },
+    "attributes" : [ "transitive", "reflexive", "object", "external" ],
+    "id" : "63"
+  }, {
+    "iri" : "http://purl.org/stringdb#resolution",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "66",
+    "label" : {
+      "IRI-based" : "resolution",
+      "undefined" : "resolution"
+    },
+    "domain" : "58",
+    "comment" : {
+      "undefined" : "The image resolution as a qualitative value (e.g. high resolution)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "65"
+  }, {
+    "iri" : "http://purl.org/stringdb#phylogeneticScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "17",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "pscore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "phylogeneticScore",
+      "undefined" : "phylogenetic profile score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The cooccurence score of the phyletic profile that is derived from similar absence/presence patterns of genes."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "67"
+  }, {
+    "iri" : "http://purl.org/stringdb#physicallyInteractsWith",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "15",
+    "label" : {
+      "IRI-based" : "physicallyInteractsWith",
+      "undefined" : "physically interacts with"
+    },
+    "superproperty" : [ "69" ],
+    "domain" : "15",
+    "comment" : {
+      "undefined" : "It states a protein that physically interacts with another one, a pairwise relationship."
+    },
+    "attributes" : [ "symmetric", "object" ],
+    "id" : "68"
+  }, {
+    "iri" : "http://purl.org/stringdb#edgeNumber",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "29",
+    "label" : {
+      "IRI-based" : "edgeNumber",
+      "undefined" : "edge amount"
+    },
+    "domain" : "47",
+    "comment" : {
+      "undefined" : "The number of edges in the network."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "70"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/replaces",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "replaces"
+    },
+    "domain" : "12",
+    "comment" : {
+      "undefined" : "A resource that is replaced by this resource."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "72"
+  }, {
+    "iri" : "http://purl.org/stringdb#format",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "30",
+    "label" : {
+      "IRI-based" : "format",
+      "undefined" : "format"
+    },
+    "domain" : "58",
+    "comment" : {
+      "undefined" : "The file format (e.g. png, svg)."
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "73"
+  }, {
+    "range" : "5",
+    "domain" : "15",
+    "attributes" : [ "object", "anonymous" ],
+    "id" : "75"
+  }, {
+    "iri" : "http://purl.org/stringdb#coexpressionScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "38",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "ascore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "coexpressionScore",
+      "undefined" : "coexpression score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The coexpression score is derived from similar pattern of mRNA expression measured by DNA arrays and similar technologies."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "76"
+  }, {
+    "iri" : "http://purl.org/net/orth#isHomologousMember",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "11",
+    "label" : {
+      "IRI-based" : "isHomologousMember",
+      "en" : "is homologous member"
+    },
+    "superproperty" : [ "27" ],
+    "domain" : "11",
+    "comment" : {
+      "en" : "Inverse of has homologous member. This property permits to find the cluster in which a cluster or sequence unit is included."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "28"
+  }, {
+    "iri" : "http://purl.org/stringdb#combinedScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "37",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "score",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "combinedScore",
+      "undefined" : "combined score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The combined score is computed by combining the probabilities from the different evidence channels  and corrected for the probability of randomly observing an interaction. The combined score is computed from the partial scores (e.g. fusion score, experimental score)."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "82"
+  }, {
+    "iri" : "http://purl.org/stringdb#pvalue",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "3",
+    "annotations" : {
+      "relatedMatch" : [ {
+        "identifier" : "relatedMatch",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/OBI_0000175",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "pvalue",
+      "undefined" : "p-value"
+    },
+    "domain" : "47",
+    "comment" : {
+      "undefined" : "P-value for statistical significance. For example, in STRING DB, the significance of the network having more interactions than expected."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "83"
+  }, {
+    "iri" : "http://purl.org/stringdb#functionallyInteractsWith",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "15",
+    "label" : {
+      "IRI-based" : "functionallyInteractsWith",
+      "undefined" : "functionally interacts with"
+    },
+    "superproperty" : [ "69" ],
+    "domain" : "15",
+    "comment" : {
+      "undefined" : "It states a protein that functionally interacts with another one, a pairwise relationship."
+    },
+    "attributes" : [ "symmetric", "object" ],
+    "id" : "84"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/classifiedWith",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "85",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "classifiedWith",
+      "undefined" : "classified with"
+    },
+    "domain" : "87",
+    "comment" : {
+      "undefined" : "A concept that classifies this resource."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "86"
+  }, {
+    "iri" : "http://purl.org/stringdb#nodeNumber",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "24",
+    "label" : {
+      "IRI-based" : "nodeNumber",
+      "undefined" : "protein amount"
+    },
+    "domain" : "47",
+    "comment" : {
+      "undefined" : "The number of proteins in the network, that are representend with nodes."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "88"
+  }, {
+    "iri" : "http://purl.org/stringdb#expectedEdgeNumber",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "26",
+    "label" : {
+      "IRI-based" : "expectedEdgeNumber",
+      "undefined" : "expected edge amount"
+    },
+    "domain" : "47",
+    "comment" : {
+      "undefined" : "The expected number of edges based on the nodes degrees."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "89"
+  }, {
+    "iri" : "http://purl.org/stringdb#experimentalScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "31",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "escore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "experimentalScore",
+      "undefined" : "experimental score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The experimental score is derived from experimental data, such as, affinity chromatography."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "90"
+  }, {
+    "iri" : "http://purl.org/dc/terms/identifier",
+    "baseIri" : "http://purl.org/dc/terms",
+    "range" : "40",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.org/dc/terms/",
+        "type" : "iri"
+      }, {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.org/dc/terms/",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "identifier",
+      "en" : "Identifier"
+    },
+    "domain" : "11",
+    "comment" : {
+      "en" : "An unambiguous reference to the resource within a given context."
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "91"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/RO_0002162",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "RO_0002162",
+      "en" : "in taxon"
+    },
+    "domain" : "6",
+    "comment" : {
+      "en" : "Connects a biological entity to its taxon of origin."
+    },
+    "attributes" : [ "object", "someValues", "external" ],
+    "id" : "92"
+  }, {
+    "iri" : "http://purl.org/net/orth#organism",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "6",
+    "label" : {
+      "IRI-based" : "organism"
+    },
+    "domain" : "15",
+    "attributes" : [ "object", "someValues", "external" ],
+    "id" : "93"
+  }, {
+    "iri" : "http://purl.org/stringdb#hasFunctionalInteractionScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "hasFunctionalInteractionScore",
+      "undefined" : "has functional interaction score"
+    },
+    "domain" : "46",
+    "comment" : {
+      "undefined" : "It states a protein-protein functional interaction score."
+    },
+    "attributes" : [ "functional", "object" ],
+    "id" : "94"
+  }, {
+    "iri" : "http://purl.org/net/orth#hasHomologousMember",
+    "inverse" : "28",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "96",
+    "label" : {
+      "IRI-based" : "hasHomologousMember",
+      "en" : "has homologous member"
+    },
+    "superproperty" : [ "63" ],
+    "domain" : "95",
+    "comment" : {
+      "en" : "Property that permits to define the membership of a cluster of homologs or a sequence unit to a clusters of homologs."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "64"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/RO_0001018",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "range" : "98",
+    "label" : {
+      "IRI-based" : "RO_0001018",
+      "en" : "contained in"
+    },
+    "domain" : "15",
+    "attributes" : [ "allValues", "object", "external" ],
+    "id" : "97"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/scientificName",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "81",
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "http://purl.uniprot.org/core/",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "scientificName",
+      "undefined" : "scientific name"
+    },
+    "domain" : "11",
+    "attributes" : [ "functional", "external", "datatype" ],
+    "id" : "99"
+  }, {
+    "iri" : "http://purl.org/stringdb#hasProtein",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "15",
+    "label" : {
+      "IRI-based" : "hasProtein",
+      "undefined" : "has protein"
+    },
+    "domain" : "46",
+    "comment" : {
+      "undefined" : "It states a protein that is part of or contained in the subject."
+    },
+    "attributes" : [ "object", "someValues" ],
+    "id" : "100"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/replaces",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "85",
+    "label" : {
+      "IRI-based" : "replaces"
+    },
+    "domain" : "85",
+    "comment" : {
+      "undefined" : "A resource that is replaced by this resource."
+    },
+    "attributes" : [ "allValues", "object", "external" ],
+    "id" : "101"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/replaces",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "replaces"
+    },
+    "domain" : "12",
+    "comment" : {
+      "undefined" : "A resource that is replaced by this resource."
+    },
+    "attributes" : [ "allValues", "object", "external" ],
+    "id" : "102"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/CDAO_0000178",
+    "inverse" : "10",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "range" : "11",
+    "label" : {
+      "IRI-based" : "CDAO_0000178",
+      "undefined" : "has"
+    },
+    "domain" : "11",
+    "subproperty" : [ "60", "33" ],
+    "comment" : {
+      "en" : "Generic 'has' property."
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "34"
+  }, {
+    "iri" : "http://purl.org/stringdb#bitscore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "41",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "bitscore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "https://en.wikipedia.org/wiki/Smith–Waterman_algorithm",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "bitscore",
+      "undefined" : "bit-score"
+    },
+    "domain" : "45",
+    "comment" : {
+      "undefined" : "Smith-Waterman alignment bit-score."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "103"
+  }, {
+    "iri" : "http://purl.org/net/orth#inDataset",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "16",
+    "label" : {
+      "IRI-based" : "inDataset",
+      "en" : "in dataset"
+    },
+    "domain" : "45",
+    "comment" : {
+      "en" : "Property that provides the dataset associated with a gene tree node"
+    },
+    "attributes" : [ "allValues", "object", "external" ],
+    "id" : "104"
+  }, {
+    "iri" : "http://purl.org/net/orth#hasHomologousMember",
+    "inverse" : "28",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "5",
+    "label" : {
+      "IRI-based" : "hasHomologousMember",
+      "en" : "has homologous member"
+    },
+    "superproperty" : [ "63" ],
+    "domain" : "45",
+    "comment" : {
+      "en" : "Property that permits to define the membership of a cluster of homologs or a sequence unit to a clusters of homologs."
+    },
+    "attributes" : [ "allValues", "object", "external" ],
+    "id" : "105"
+  }, {
+    "iri" : "http://purl.org/net/orth#inDataset",
+    "baseIri" : "http://purl.org/net/orth",
+    "range" : "16",
+    "label" : {
+      "IRI-based" : "inDataset",
+      "en" : "in dataset"
+    },
+    "domain" : "48",
+    "comment" : {
+      "en" : "Property that provides the dataset associated with a gene tree node"
+    },
+    "attributes" : [ "object", "external" ],
+    "id" : "61"
+  }, {
+    "iri" : "http://purl.org/stringdb#fusionScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "22",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "fscore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "fusionScore",
+      "undefined" : "gene fusion score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The gene fusion score is derived from fused proteins in other species."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "106"
+  }, {
+    "iri" : "http://purl.obolibrary.org/obo/RO_0002434",
+    "baseIri" : "http://purl.obolibrary.org/obo",
+    "range" : "51",
+    "annotations" : {
+      "IAO_0000232" : [ {
+        "identifier" : "IAO_0000232",
+        "language" : "undefined",
+        "value" : "Note that this relationship type, and sub-relationship types may be redundant with process terms from other ontologies. For example, the symbiotic relationship hierarchy parallels GO. The relations are provided as a convenient shortcut. Consider using the more expressive processual form to capture your data. In the future, these relations will be linked to their cognate processes through rules.",
+        "type" : "label"
+      } ],
+      "IAO_0000115" : [ {
+        "identifier" : "IAO_0000115",
+        "language" : "undefined",
+        "value" : "A relationship that holds between two entities in which the processes executed by the two entities are causally connected.",
+        "type" : "label"
+      } ],
+      "hasExactSynonym" : [ {
+        "identifier" : "hasExactSynonym",
+        "language" : "undefined",
+        "value" : "in pairwise interaction with",
+        "type" : "label"
+      } ],
+      "IAO_0000117" : [ {
+        "identifier" : "IAO_0000117",
+        "language" : "undefined",
+        "value" : "Chris Mungall",
+        "type" : "label"
+      } ],
+      "IAO_0000116" : [ {
+        "identifier" : "IAO_0000116",
+        "language" : "undefined",
+        "value" : "This relation and all sub-relations can be applied to either (1) pairs of entities that are interacting at any moment of time (2) populations or species of entity whose members have the disposition to interact (3) classes whose members have the disposition to interact.",
+        "type" : "label"
+      }, {
+        "identifier" : "IAO_0000116",
+        "language" : "undefined",
+        "value" : "Considering relabeling as 'pairwise interacts with'",
+        "type" : "label"
+      } ],
+      "page" : [ {
+        "identifier" : "page",
+        "language" : "undefined",
+        "value" : "https://github.com/oborel/obo-relations/wiki/InteractionRelations",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://purl.obolibrary.org/obo/MI_0914",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "RO_0002434",
+      "undefined" : "interacts with"
+    },
+    "domain" : "51",
+    "subproperty" : [ "68", "84" ],
+    "attributes" : [ "symmetric", "object", "external" ],
+    "id" : "69"
+  }, {
+    "iri" : "http://purl.org/stringdb#databaseScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "39",
+    "annotations" : {
+      "altLabel" : [ {
+        "identifier" : "altLabel",
+        "language" : "undefined",
+        "value" : "dscore",
+        "type" : "label"
+      } ],
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "databaseScore",
+      "undefined" : "database score"
+    },
+    "domain" : "1",
+    "comment" : {
+      "undefined" : "The database score is derived from curated data of various databases."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "107"
+  }, {
+    "iri" : "http://purl.uniprot.org/core/mnemonic",
+    "baseIri" : "http://purl.uniprot.org/core",
+    "range" : "80",
+    "annotations" : {
+      "seeAlso" : [ {
+        "identifier" : "seeAlso",
+        "language" : "undefined",
+        "value" : "http://www.uniprot.org/manual/entry_name",
+        "type" : "label"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "mnemonic",
+      "undefined" : "Mnemonic"
+    },
+    "maxCardinality" : "1",
+    "domain" : "11",
+    "comment" : {
+      "en" : "A easy to remember identifier for a UniProtKB entry, but it is not a stable identifier and should not be used by programs to identify entries.",
+      "undefined" : "A rememberable string that can be used to find entries, not a stable identifier!"
+    },
+    "attributes" : [ "external", "datatype" ],
+    "id" : "108"
+  }, {
+    "iri" : "http://purl.org/stringdb#localClusteringCoefficient",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "21",
+    "label" : {
+      "IRI-based" : "localClusteringCoefficient",
+      "undefined" : "edge amount"
+    },
+    "domain" : "47",
+    "comment" : {
+      "undefined" : "The average local clustering coefficient."
+    },
+    "attributes" : [ "functional", "datatype" ],
+    "id" : "109"
+  }, {
+    "iri" : "http://purl.org/stringdb#hasNetworkImage",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "58",
+    "label" : {
+      "IRI-based" : "hasNetworkImage",
+      "undefined" : "has network image"
+    },
+    "domain" : "15",
+    "comment" : {
+      "undefined" : "It states a network image of interactions among  proteins (e.g. from STRING database). The image is composed of a neighborhood surrounding one or more proteins."
+    },
+    "attributes" : [ "object" ],
+    "id" : "110"
+  }, {
+    "iri" : "http://purl.org/stringdb#hasPhysicalInteractionScore",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "1",
+    "label" : {
+      "IRI-based" : "hasPhysicalInteractionScore",
+      "undefined" : "has physical interaction score"
+    },
+    "domain" : "46",
+    "comment" : {
+      "undefined" : "It states a protein-protein physical interaction score."
+    },
+    "attributes" : [ "functional", "object" ],
+    "id" : "111"
+  }, {
+    "iri" : "http://purl.org/stringdb#networkType",
+    "baseIri" : "http://purl.org/stringdb",
+    "range" : "79",
+    "label" : {
+      "IRI-based" : "networkType",
+      "undefined" : "network type"
+    },
+    "domain" : "58",
+    "comment" : {
+      "undefined" : "The network type: functional or physical"
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "112"
+  } ]
+}

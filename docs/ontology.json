@@ -1,0 +1,1773 @@
+[ {
+  "@id" : "_:genid1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.org/net/orth#HomologsCluster"
+    }, {
+      "@id" : "http://purl.org/net/orth#HomologyRelation"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid10",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.org/net/orth#HomologsCluster"
+    }, {
+      "@id" : "http://purl.org/net/orth#HomologyRelation"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid13",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.org/stringdb#PPIEnrichment"
+    }, {
+      "@id" : "http://purl.org/stringdb#ProteinProteinInteraction"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid16",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
+    "@list" : [ {
+      "@value" : "actions"
+    }, {
+      "@value" : "confidence"
+    }, {
+      "@value" : "evidence"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid20",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
+    "@list" : [ {
+      "@value" : "functional"
+    }, {
+      "@value" : "physical"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid23",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
+    "@list" : [ {
+      "@value" : "high"
+    }, {
+      "@value" : "low"
+    }, {
+      "@value" : "medium"
+    }, {
+      "@value" : "unknown"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid28",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://purl.org/net/orth#SequenceUnit"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.org/net/orth#hasHomologousMember"
+  } ]
+}, {
+  "@id" : "_:genid29",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://purl.org/net/orth#OrthologyDataset"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.org/net/orth#inDataset"
+  } ]
+}, {
+  "@id" : "_:genid30",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/RO_0002162"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://purl.uniprot.org/core/Taxon"
+  } ]
+}, {
+  "@id" : "_:genid31",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.org/net/orth#organism"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://purl.org/net/orth#Organism"
+  } ]
+}, {
+  "@id" : "_:genid32",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://semanticscience.org/resource/SIO_000750"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/RO_0001018"
+  } ]
+}, {
+  "@id" : "_:genid33",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "_:genid34"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.org/stringdb#format"
+  } ]
+}, {
+  "@id" : "_:genid34",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ],
+  "http://www.w3.org/2002/07/owl#oneOf" : [ {
+    "@list" : [ {
+      "@value" : "png"
+    }, {
+      "@value" : "svg"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid37",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.org/stringdb#hasProtein"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ]
+}, {
+  "@id" : "_:genid38",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://purl.uniprot.org/core/Concept"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.uniprot.org/core/replaces"
+  } ]
+}, {
+  "@id" : "_:genid39",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "http://purl.uniprot.org/core/Taxon"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.uniprot.org/core/replaces"
+  } ]
+}, {
+  "@id" : "_:genid4",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.org/net/orth#HomologsCluster"
+    }, {
+      "@id" : "http://purl.org/net/orth#SequenceUnit"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid40",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#maxQualifiedCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/2002/07/owl#onDataRange" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "http://purl.uniprot.org/core/mnemonic"
+  } ]
+}, {
+  "@id" : "_:genid41",
+  "http://www.w3.org/2002/07/owl#maxQualifiedCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "2"
+  } ]
+}, {
+  "@id" : "_:genid7",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://purl.org/net/orth#HomologsCluster"
+    }, {
+      "@id" : "http://purl.org/net/orth#HomologyRelation"
+    } ]
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/BFO_0000040",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000112" : [ {
+    "@value" : "A heart, a human, a fly, a microarray."
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray."
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000117" : [ {
+    "@value" : "James Malone"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "http://creativecommons.org/licenses/by/4.0/"
+  } ],
+  "http://www.ebi.ac.uk/efo/source_definition" : [ {
+    "@value" : "An independent continuant [snap:IndependentContinuant] that is spatially extended whose identity is independent of that of other entities and can be maintained through time. Note: Material entity [snap:MaterialEntity] subsumes object [snap:Object], fiat object part [snap:FiatObjectPart], and object aggregate [snap:ObjectAggregate], which assume a three level theory of granularity, which is inadequate for some domains, such as biology."
+  } ],
+  "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym" : [ {
+    "@value" : "material type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/bfo.owl"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "material entity"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#relatedMatch" : [ {
+    "@id" : "http://semanticscience.org/resource/SIO_000004"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/CDAO_0000178",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Generic 'has' property."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "has"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/CDAO_0000194"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/CDAO_0000194",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "part_of"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000111",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000112",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "example of usage"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000115",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "definition"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000116",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/iao.owl"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "editor note"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000117",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "term editor"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000119",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000232",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/iao.owl"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "curator note"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/NCIT_C14250",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Organism"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "http://purl.org/net/orth#Organism"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/OBI_0000175",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.obolibrary.org/obo/IAO_0000111" : [ {
+    "@language" : "en",
+    "@value" : "p-value"
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000112" : [ {
+    "@value" : "PMID:19696660\nin contrast to the in-vivo data AT-III increased significantly from\n113.5% at baseline to 117% after 4 days (n = 10, P-value= 0.02; Table 2)."
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@language" : "en",
+    "@value" : "A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone."
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000119" : [ {
+    "@value" : "WEB: http://en.wikipedia.org/wiki/P-value"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "http://creativecommons.org/licenses/by/4.0/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/obi/2020-04-23/obi.owl"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "p-value"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#inScheme" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/obi.owl"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/RO_0001018",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "contained in"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/RO_0002162",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Connects a biological entity to its taxon of origin."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "in taxon"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/RO_0002350",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Is member of is a mereological relation between a item and a collection."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "http://purl.obolibrary.org/obo/ro.owl"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "member of"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/RO_0002434",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#SymmetricProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A relationship that holds between two entities in which the processes executed by the two entities are causally connected."
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000116" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "@value" : "Considering relabeling as 'pairwise interacts with'"
+  }, {
+    "@value" : "This relation and all sub-relations can be applied to either (1) pairs of entities that are interacting at any moment of time (2) populations or species of entity whose members have the disposition to interact (3) classes whose members have the disposition to interact."
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000117" : [ {
+    "@value" : "Chris Mungall"
+  } ],
+  "http://purl.obolibrary.org/obo/IAO_0000232" : [ {
+    "@value" : "Note that this relationship type, and sub-relationship types may be redundant with process terms from other ontologies. For example, the symbiotic relationship hierarchy parallels GO. The relations are provided as a convenient shortcut. Consider using the more expressive processual form to capture your data. In the future, these relations will be linked to their cognate processes through rules."
+  } ],
+  "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym" : [ {
+    "@value" : "in pairwise interaction with"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000040"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "interacts with"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000040"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "@value" : "http://purl.obolibrary.org/obo/MI_0914"
+  } ],
+  "http://xmlns.com/foaf/0.1/page" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "@value" : "https://github.com/oborel/obo-relations/wiki/InteractionRelations"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/SO_0000104",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "polypeptide"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/go.owl",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#ConceptScheme" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Gene Ontology"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://geneontology.org"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/obi.owl",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/creator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An account of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/elements/1.1/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Description"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/terms/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An account of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/terms/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Description"
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/terms/hasVersion",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Is Version Of."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2000-07-11"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A related resource that is a version, edition, or adaptation of the described resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/terms/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Has Version"
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/terms/isVersionOf",
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of Has Version."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2000-07-11"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A related resource of which the described resource is a version, edition, or adaptation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/terms/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Is Version Of"
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/terms/issued",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2000-07-11"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Date of formal issuance of the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/terms/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Date Issued"
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/terms/license",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2004-06-14"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A legal document giving official permission to do something with the resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.org/dc/terms/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "License"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#HomologsCluster",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Set of homologous sequences"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Cluster of homologous sequences"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "en",
+    "@value" : "Cluster of homologs"
+  }, {
+    "@language" : "en",
+    "@value" : "homologous group"
+  }, {
+    "@language" : "en",
+    "@value" : "homologs cluster"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#HomologyRelation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "This class represents homology relations among sequence units (e.g genes, proteins or gene regions)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "homology relation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "_:genid28"
+  }, {
+    "@id" : "_:genid29"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "en",
+    "@value" : "homologous relation"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#Organism",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A living being, such as an animal, a plant, a bacterium, or a fungus., Any individual living (or previously living) being. Example: animal, human being. An organim can be associated to a taxon such as \"Homo Sapiens\", NCBI taxonomy identifier: 9606."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Organism"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "_:genid30"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "en",
+    "@value" : "Living being"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#OrthologyDataset",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://purl.org/net/orth#Protein",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://purl.org/net/orth#SequenceUnit"
+  }, {
+    "@id" : "_:genid31"
+  }, {
+    "@id" : "_:genid32"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#SequenceUnit",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "protein or DNA sequence as a unit of comparison"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Sequence unit"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#hasHomolog",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#SymmetricProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Homologous pairwise relation between sequence units (e.g.: genes, proteins or gene regions). For example, A Gene(A) hasHomolog Gene(B). This property can be materialized or inferred by applying a logical rule."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#SequenceUnit"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has homolog"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/net/orth#SequenceUnit"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/CDAO_0000178"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@language" : "en",
+    "@value" : "is homologous to"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#hasHomologousMember",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Property that permits to define the membership of a cluster of homologs or a sequence unit to a clusters of homologs."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid1"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has homologous member"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid4"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://semanticscience.org/resource/SIO_000028"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "http://purl.org/net/orth#isHomologousMember"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#hasHomologyData",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Inverse property of inDataset.  It permits to retrieve  the clusters or homology relations included in a particular dataset."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#OrthologyDataset"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has homology data"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid7"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/CDAO_0000178"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "http://purl.org/net/orth#inDataset"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#inDataset",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Property that provides the dataset associated with a gene tree node"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid10"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "in dataset"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/net/orth#OrthologyDataset"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#isHomologousMember",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Inverse of has homologous member. This property permits to find the cluster in which a cluster or sequence unit is included."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "is homologous member"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/RO_0002350"
+  } ]
+}, {
+  "@id" : "http://purl.org/net/orth#organism",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#SequenceUnit"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/net/orth#Organism"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://purl.org/dc/elements/1.1/creator" : [ {
+    "@id" : "http://purl.org/query/tarcisiomf"
+  } ],
+  "http://www.w3.org/2002/07/owl#imports" : [ {
+    "@id" : "http://purl.org/lscr/0.1"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "http://purl.org/stringdb/0.2"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "en",
+    "@value" : "STRING database Web API ontology"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#NetworkImage",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A network image of interactions among  proteins, that illustrates a neighborhood surrounding one or more proteins."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "network image"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "_:genid33"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#PPIEnrichment",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Even in the absence of annotated proteins (e.g. in novel genomes) databases such as STRING can tell if the subset of proteins is functionally related, that is, if it is enriched in interactions in comparison to the background proteome-wide interaction distribution."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "protein-protein interaction enrichment"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#ProteinProteinInteraction",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Temporary, non-covalent binding between protein molecules. Protein-protein interactions occur as a result of intermolecular physical forces and spatial complementation between domains or motifs. This interaction can be either homotypic or heterotypic and effect protein structure, conformation, and function.[source: NCIT]"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "protein-protein interaction"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "_:genid37"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "PPI"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#closeMatch" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/NCIT_C18469"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#Score",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Class to define a set of any type of score values."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "score"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#averageNodeDegree",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The mean degree of the node in the network."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#PPIEnrichment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "average node degree"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#bitscore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Smith-Waterman alignment bit-score."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#HomologyRelation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "bit-score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://en.wikipedia.org/wiki/Smith–Waterman_algorithm"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "bitscore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#coexpressionScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The coexpression score is derived from similar pattern of mRNA expression measured by DNA arrays and similar technologies."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "coexpression score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "ascore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#combinedScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The combined score is computed by combining the probabilities from the different evidence channels  and corrected for the probability of randomly observing an interaction. The combined score is computed from the partial scores (e.g. fusion score, experimental score)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "combined score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "score"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#databaseScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The database score is derived from curated data of various databases."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "database score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "dscore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#edgeNumber",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The number of edges in the network."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#PPIEnrichment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "edge amount"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#expectedEdgeNumber",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The expected number of edges based on the nodes degrees."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#PPIEnrichment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "expected edge amount"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#experimentalScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The experimental score is derived from experimental data, such as, affinity chromatography."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "experimental score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "escore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#format",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The file format (e.g. png, svg)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#NetworkImage"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "format"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#functionallyInteractsWith",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#SymmetricProperty", "http://www.w3.org/2002/07/owl#IrreflexiveProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "It states a protein that functionally interacts with another one, a pairwise relationship."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "functionally interacts with"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/RO_0002434"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#fusionScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The gene fusion score is derived from fused proteins in other species."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "gene fusion score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "fscore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#hasFunctionalInteractionScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "It states a protein-protein functional interaction score."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#ProteinProteinInteraction"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "has functional interaction score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#hasNetworkImage",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "It states a network image of interactions among  proteins (e.g. from STRING database). The image is composed of a neighborhood surrounding one or more proteins."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "has network image"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/stringdb#NetworkImage"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#hasPhysicalInteractionScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "It states a protein-protein physical interaction score."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#ProteinProteinInteraction"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "has physical interaction score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#hasProtein",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "It states a protein that is part of or contained in the subject."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid13"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "has protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#localClusteringCoefficient",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The average local clustering coefficient."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#PPIEnrichment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "edge amount"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#neighborhoodScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The neighborhood score is computed from the inter-gene nucleotide count."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "gene neighborhood score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "nscore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#networkFlavor",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The style of edges in the network: evidence, confidence, actions"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#NetworkImage"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "network flavor"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid16"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#networkType",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The network type: functional or physical"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#NetworkImage"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "network type"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid20"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#nodeNumber",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The number of proteins in the network, that are representend with nodes."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#PPIEnrichment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "protein amount"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#partialScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The partial scores used to compute the combined scores."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "partial score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#phylogeneticScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The cooccurence score of the phyletic profile that is derived from similar absence/presence patterns of genes."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "phylogenetic profile score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "pscore"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#physicallyInteractsWith",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#SymmetricProperty", "http://www.w3.org/2002/07/owl#IrreflexiveProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "It states a protein that physically interacts with another one, a pairwise relationship."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "physically interacts with"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.org/net/orth#Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/RO_0002434"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#pvalue",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "P-value for statistical significance. For example, in STRING DB, the significance of the network having more interactions than expected."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#PPIEnrichment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "p-value"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#relatedMatch" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/OBI_0000175"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#resolution",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The image resolution as a qualitative value (e.g. high resolution)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#NetworkImage"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "resolution"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid23"
+  } ]
+}, {
+  "@id" : "http://purl.org/stringdb#textMiningScore",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The textmining score is derived from the co-occurrence of gene/protein names in abstracts."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.org/stringdb#Score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "text mining score"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#double"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.ncbi.nlm.nih.gov/pubmed/15608232"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://purl.org/stringdb#partialScore"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "tscore"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/Concept",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A concept used to classify resources."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.uniprot.org/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Concept"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "_:genid38"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/Database",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Metadata for a life science database."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.uniprot.org/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Database (description of)"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://www.uniprot.org/manual/cross_references_section"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/Rank",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/Resource",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A life science resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.uniprot.org/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Resource"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/Taxon",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "An element of a taxonomy for classifying life forms."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Taxon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@value" : "http://www.ncbi.nlm.nih.gov/books/NBK54428/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "_:genid39"
+  }, {
+    "@id" : "_:genid40"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/classifiedWith",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A concept that classifies this resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.uniprot.org/core/Protein"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.uniprot.org/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "classified with"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.uniprot.org/core/Concept"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/database",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.uniprot.org/core/Resource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://purl.uniprot.org/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "database"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.uniprot.org/core/Database"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/mnemonic",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A easy to remember identifier for a UniProtKB entry, but it is not a stable identifier and should not be used by programs to identify entries."
+  }, {
+    "@value" : "A rememberable string that can be used to find entries, not a stable identifier!"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Mnemonic"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@value" : "http://www.uniprot.org/manual/entry_name"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/rank",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "The rank of a taxon."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.uniprot.org/core/Taxon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.uniprot.org/core/Rank"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/replaces",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "A resource that is replaced by this resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.uniprot.org/core/Taxon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://purl.uniprot.org/core/Taxon"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/core/scientificName",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty", "http://www.w3.org/2002/07/owl#FunctionalProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "http://purl.uniprot.org/core/"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "scientific name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/database/InterPro",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.uniprot.org/core/Database", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Integrated resource of protein families, domains and functional sites"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://www.ebi.ac.uk/interpro"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "InterPro"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/database/KEGG",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.uniprot.org/core/Database", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#altLabel" : [ {
+    "@value" : "KEGG"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "KEGG: Kyoto Encyclopedia of Genes and Genomes"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://www.genome.jp/kegg/"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/database/Pfam",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.uniprot.org/core/Database", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Pfam protein domain database"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://pfam.xfam.org"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Pfam"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/database/Reactome",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.uniprot.org/core/Database", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Reactome - a knowledgebase of biological pathways and processes"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://reactome.org"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "Reactome"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/database/SMART",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.uniprot.org/core/Database", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Simple Modular Architecture Research Tool; a protein domain database"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "http://smart.embl.de/"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#altLabel" : [ {
+    "@value" : "SMART"
+  } ]
+}, {
+  "@id" : "http://purl.uniprot.org/taxonomy/9606",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://purl.uniprot.org/core/Taxon" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Homo sapiens"
+  } ]
+}, {
+  "@id" : "http://semanticscience.org/resource/SIO_000028",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#TransitiveProperty", "http://www.w3.org/2002/07/owl#ReflexiveProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "has part is a transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "http://semanticscience.org/ontology/sio.owl"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has part"
+  } ]
+}, {
+  "@id" : "http://semanticscience.org/resource/SIO_000750",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A database is a data store such as relational, hierarchical and graph databases."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "database"
+  } ]
+}, {
+  "@id" : "http://www.ebi.ac.uk/efo/source_definition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.geneontology.org/formats/oboInOwl#hasAlternativeId",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "has_alternative_id"
+  } ]
+}, {
+  "@id" : "http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has_dbxref"
+  } ]
+}, {
+  "@id" : "http://www.geneontology.org/formats/oboInOwl#hasExactSynonym",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An alias in which the alias exhibits true synonymy. Example: ornithine cycle is an exact synonym of urea cycle"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has_exact_synonym"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+  } ]
+}, {
+  "@id" : "http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An alias in which the alias is related the primary class name, but not necessarily broader or narrower. Example: cytochrome bc1 complex is a related synonym of ubiquinol-cytochrome-c reductase activity; virulence is a related synonym of pathogenesis"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has_related_synonym"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#hasSynonym"
+  } ]
+}, {
+  "@id" : "http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A relation between a class and an alias term."
+  }, {
+    "@value" : "Note that this should be a super-property of hasRelatedSynonym, hasExactSynonym etc; however, we cannot state this and remain in OWL-DL"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.geneontology.org/formats/oboInOwl#"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has_synonym"
+  } ]
+}, {
+  "@id" : "http://www.ifomis.org/bfo/1.1/snap#MaterialEntity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.w3.org/2000/01/rdf-schema#altLabel",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2001/XMLSchema#date",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
+}, {
+  "@id" : "http://www.w3.org/2002/07/owl#maxQualifiedCardinality",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Concept Scheme"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "A set of concepts, optionally including statements about semantic relationships between those concepts."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#example" : [ {
+    "@language" : "en",
+    "@value" : "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#scopeNote" : [ {
+    "@language" : "en",
+    "@value" : "A concept scheme may be defined to include concepts from different sources."
+  } ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#altLabel",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The range of skos:altLabel is the class of RDF plain literals."
+  }, {
+    "@language" : "en",
+    "@value" : "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "alternative label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "An alternative lexical label for a resource."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#example" : [ {
+    "@language" : "en",
+    "@value" : "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)."
+  } ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#closeMatch",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#definition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "definition"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#note"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "A statement or formal explanation of the meaning of a concept."
+  } ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#example",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#inScheme",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "is in scheme"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "Relates a resource (for example a concept) to a concept scheme in which it is included."
+  } ],
+  "http://www.w3.org/2004/02/skos/core#scopeNote" : [ {
+    "@language" : "en",
+    "@value" : "A concept may be a member of more than one concept scheme."
+  } ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#note",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag."
+  }, {
+    "@language" : "en",
+    "@value" : "The range of skos:prefLabel is the class of RDF plain literals."
+  }, {
+    "@language" : "en",
+    "@value" : "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://www.w3.org/2004/02/skos/core"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "preferred label"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "The preferred lexical label for a resource, in a given language."
+  } ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#relatedMatch",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#scopeNote",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://xmlns.com/foaf/0.1/page",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://pubmed.ncbi.nlm.nih.gov",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#altLabel" : [ {
+    "@value" : "PubMed"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "PubMed publications"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://pubmed.ncbi.nlm.nih.gov"
+  } ]
+}, {
+  "@id" : "https://string-db.org",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://semanticscience.org/resource/SIO_000750" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "STRING is a database of known and predicted protein-protein interactions. The interactions include direct (physical) and indirect (functional) associations; they stem from computational prediction, from knowledge transfer between organisms, and from interactions aggregated from other (primary) databases."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "STRING database"
+  } ]
+}, {
+  "@id" : "https://www.uniprot.org/docs/keywlist.txt",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://www.w3.org/2004/02/skos/core#ConceptScheme" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "UniProt Keywords"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#seeAlso" : [ {
+    "@id" : "https://www.uniprot.org/help/keywords"
+  } ]
+} ]

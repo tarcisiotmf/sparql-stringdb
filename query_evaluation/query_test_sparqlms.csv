@@ -1,0 +1,10 @@
+Query id,Question,Mean (seconds),Standard deviation,#Results
+Q1,Get proteins that directly and functionally interact with 3847.GLYMA08G27070.1,0.9472465276718139,0.5056405093545888,10
+Q2,Get proteins that directly and physically interact with 3847.GLYMA08G27070.1,0.3136204957962036,0.028276287182390152,0
+Q3,Get all function annotations for the protein 3847.GLYMA08G27070.1,0.7437384128570557,0.11910389283694138,26
+Q4,Get STRING database version,0.25677535533905027,0.023376539001833743,3
+Q5,Get the corresponding STRING identifier of TP53 human gene.,0.31774468421936036,0.014539056308085002,1
+Q6,Get all proteins that functionally interact with 3847.GLYMA08G27070.1,0.9129023790359497,0.21091227172174226,36
+Q7,Get all proteins that physically interact with 3847.GLYMA08G27070.1,0.3681321620941162,0.0725651011329634,0
+Q8,What are the  direct protein-protein functional interactions of a rice gene that is orthologous to the OMT2 wheat gene,1.3337406396865845,0.4829071272189944,10
+

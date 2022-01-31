@@ -1,0 +1,9 @@
+{
+  "@context": {
+    "@base": "http://purl.org/stringdb",
+    "@vocab": "https://string-db.org/cgi/help.pl?subpage=api#",
+   
+    "ncbiTaxonId": {"@type": "http://www.w3.org/2000/01/rdf-schema#Literal"}
+
+  }
+}

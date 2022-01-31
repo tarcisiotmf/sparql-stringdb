@@ -1,0 +1,6 @@
+{
+  "@context": {
+    "@base": "http://purl.org/stringdb",
+    "@vocab": "https://string-db.org/cgi/help.pl?subpage=api#"
+  }
+}
