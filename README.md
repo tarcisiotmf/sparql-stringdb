@@ -10,7 +10,7 @@ For a quick test of the deployed SPARQL-MS endpoints, run the shell script [test
 A performace evaluation was done with several queries that are fully described in [query_evaluation](query_evaluation/README.md).   
 
 ## Towards a protein-protein interaction ontology: the STRING database use case
-The ontology used to structure the STRING database Web API resposes are fully described and available in [STRING DB ontology documentation](http://tarcisiotmf.github.io/sparql-stringdb/). 
+The ontology used to structure the STRING database Web API responses are fully described and available in [STRING DB ontology documentation](http://tarcisiotmf.github.io/sparql-stringdb/). 
 
 The official persitent URL of this ontology is http://purl.org/stringdb .
 
