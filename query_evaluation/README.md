@@ -106,7 +106,7 @@ prefix : <http://purl.org/stringdb#>
 
 SELECT * WHERE {
 
-SERVICE <http://by1amv.eu.seeds.basf.net/service/stringdb/getFunctionalAnnotation_sd> {
+SERVICE <http://localhost/service/stringdb/getFunctionalAnnotation_sd> {
  ?protein a orth:Protein;      
  owl:sameAs ?proteinURI ;        
     orth:organism  ?organism;
@@ -142,7 +142,7 @@ up:database ?db . } }}
 **SPARQL query:**
 ```commandline
 SELECT * WHERE {
-SERVICE <http://by1amv.eu.seeds.basf.net/service/stringdb/getVersion_sd> {
+SERVICE <http://localhost/service/stringdb/getVersion_sd> {
 ?s ?p ?v }}
 ```
 
@@ -167,7 +167,7 @@ prefix up: <http://purl.uniprot.org/core/>
 prefix sio: <http://semanticscience.org/resource/> 
 SELECT * WHERE {
 
-SERVICE <http://by1amv.eu.seeds.basf.net/service/stringdb/mapIds_sd> {
+SERVICE <http://localhost/service/stringdb/mapIds_sd> {
 ?proteinURI a orth:Protein;              
     orth:organism  ?organism;
     skos:prefLabel ?prefName;
