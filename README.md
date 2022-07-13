@@ -16,3 +16,6 @@ The official persitent URL of this ontology is http://purl.org/stringdb .
 
 ## License 
 The files in this repository are under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). However, note that terms that are not prefixed with http://purl.org/stringdb# at the [STRING database Web API ontology](http://tarcisiotmf.github.io/sparql-stringdb/) may be subject to another license, please refer to the original ontology of the term for further license details (often metioned within the "Is defined by" subsection / property). 
+
+## To cite us:
+Mendes de Farias, T., Dessimoz, C., Ayllon Benitez, A., Yang, C., Long, J., and Sima, A.-C., "Federating and querying heterogeneous and distributed Web APIs and triple stores". To appear in proceedings of ISMB 2022 Bio-ontologies COSI, 2022 (preprint https://doi.org/10.48550/arXiv.2206.01594).
